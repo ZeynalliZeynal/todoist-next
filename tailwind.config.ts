@@ -8,7 +8,11 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      container: {
+        center: true,
+      },
       colors: {
+        'button-bg-hover': 'var(--button-bg-hover-dark)',
         background: {
           100: 'var(--ds-background-100)',
           200: 'var(--ds-background-200)',
@@ -120,6 +124,35 @@ const config: Config = {
           800: 'var(--ds-pink-800)',
           900: 'var(--ds-pink-900)',
           1000: 'var(--ds-pink-1000)',
+        },
+      },
+      boxShadow: {
+        'header-border': 'var(--header-border)',
+      },
+      animation: {
+        in: 'in 300ms forwards',
+        out: 'out 300ms forwards',
+      },
+      keyframes: {
+        in: {
+          from: {
+            transform: 'translate(-50%, -0.5rem)',
+            opacity: '0',
+          },
+          to: {
+            transform: 'translate(-50%, 0)',
+            opacity: '1',
+          },
+        },
+        out: {
+          from: {
+            transform: 'translate(-50%, 0)',
+            opacity: '1',
+          },
+          to: {
+            transform: 'translate(-50%, -0.5rem)',
+            opacity: '0',
+          },
         },
       },
     },

@@ -1,0 +1,25 @@
+ul,
+ol {
+  display: flex;
+}
+
+li {
+  display: inline-flex;
+}
+
+button,
+a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+span {
+  display: inline-flex;
+}
+
+img,
+svg {
+  width: 100%;
+  height: 100%;
+}

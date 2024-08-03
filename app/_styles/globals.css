@@ -2,9 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-* {
-  transition: colors 250ms ease-in-out;
-}
+@import url('./common.css');
 
 :root {
   &,
@@ -110,6 +108,10 @@
     --ds-pink-800: #df2670;
     --ds-pink-900: #bd2864;
     --ds-pink-1000: #430a23;
+
+    --button-bg-hover-dark: #383838;
+
+    --header-border: 0 1px 0 0 #0000001a;
   }
 
   &.dark-mode {
@@ -214,5 +216,14 @@
     --ds-pink-800: #df2670;
     --ds-pink-900: #f75f8f;
     --ds-pink-1000: #feecf4;
+
+    --button-bg-hover-dark: var(--ds-gray-alpha-900);
+
+    --header-border: 0 1px 0 0 #ffffff1a;
   }
+}
+
+button,
+a {
+  transition: all 200ms ease;
 }
