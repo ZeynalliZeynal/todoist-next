@@ -226,10 +226,6 @@
 }
 
 @layer base {
-    ::selection {
-        @apply bg-gray-1000 text-background-100
-    }
-
     body {
         @apply bg-background-100 text-gray-1000;
     }
