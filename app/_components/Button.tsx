@@ -1,32 +1,49 @@
-import Link from 'next/link';
-import { ReactNode } from 'react';
+import Link from "next/link";
+import { ReactNode } from "react";
+
+interface ButtonProps {
+  children: ReactNode;
+  type?: "button" | "link";
+  href?: string;
+  size?: "lg" | "md" | "sm";
+  icon?: ReactNode;
+  primary?: true;
+  onClick?: () => void;
+}
 
 const Button = ({
   children,
-  type = 'button',
-  href = '/',
+  type = "button",
+  size = "md",
+  href = "/",
+  icon = null,
   primary,
   onClick,
-}: {
-  children: ReactNode;
-  type?: 'button' | 'link';
-  href?: string;
-  primary?: true;
-  onClick?: () => void;
-}) => {
-  const className = primary
-    ? 'font-medium px-3 h-8 border text-gray-1000 border-gray-alpha-400 rounded-md bg-background-100 hover:bg-gray-alpha-200'
-    : 'font-medium px-3 h-8 border text-background-100 border-gray-200 rounded-md bg-gray-1000 hover:bg-button-bg-hover';
-  if (type === 'link')
+}: ButtonProps) => {
+  if (type === "link")
     return (
-      <Link href={href} className={className}>
-        <span className='px-2'>{children}</span>
+      <Link
+        href={href}
+        className={`font-medium border ${
+          primary
+            ? "text-gray-1000 border-gray-alpha-400 bg-background-100 hover:bg-gray-alpha-200"
+            : "text-background-100 border-gray-200 bg-gray-1000 hover:bg-button-bg-hover"
+        } ${size === "md" ? "px-3 rounded-md h-8" : size === "lg" ? "px-3.5 rounded-full h-12" : ""}`}
+      >
+        {icon} <span className="px-2">{children}</span>
       </Link>
     );
 
   return (
-    <button className={className} onClick={onClick}>
-      <span className='px-2'>{children}</span>
+    <button
+      className={`font-medium border ${
+        primary
+          ? "text-gray-1000 border-gray-alpha-400 bg-background-100 hover:bg-gray-alpha-200"
+          : "text-background-100 border-gray-200 bg-gray-1000 hover:bg-button-bg-hover"
+      } ${size === "md" ? "px-3 rounded-md h-8" : size === "lg" ? "px-3.5 rounded-full h-12" : ""}`}
+      onClick={onClick}
+    >
+      {icon} <span className="px-2">{children}</span>
     </button>
   );
 };

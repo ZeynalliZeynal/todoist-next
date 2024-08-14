@@ -1,25 +1,23 @@
 ul,
 ol {
-  display: flex;
+    display: flex;
 }
 
 li {
-  display: inline-flex;
+    display: inline-flex;
 }
 
 button,
 a {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
 }
 
 span {
-  display: inline-flex;
+    display: inline-flex;
 }
 
-img,
-svg {
-  width: 100%;
-  height: 100%;
+img, svg {
+    user-select: none;
 }

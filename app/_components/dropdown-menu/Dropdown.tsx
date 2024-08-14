@@ -1,7 +1,7 @@
-'use client';
+"use client";
 
-import { useOutsideClick } from '@/app/_hooks/useOutsideClick';
-import {
+import { useOutsideClick } from "@/app/_hooks/useOutsideClick";
+import React, {
   cloneElement,
   createContext,
   ReactElement,
@@ -11,11 +11,11 @@ import {
   useEffect,
   useRef,
   useState,
-} from 'react';
-import { createPortal } from 'react-dom';
+} from "react";
+import { createPortal } from "react-dom";
 
 type RectType = Record<
-  'top' | 'height' | 'left' | 'right' | 'width' | 'bottom',
+  "top" | "height" | "left" | "right" | "width" | "bottom",
   number
 >;
 
@@ -32,12 +32,12 @@ const DropdownContext = createContext<IDropdown | null>(null);
 
 const useDropdown = () => {
   const context = useContext(DropdownContext);
-  if (!context) throw new Error('Dropdown cannot be used outside the provider');
+  if (!context) throw new Error("Dropdown cannot be used outside the provider");
   return context;
 };
 
 export const Dropdown = ({ children }: { children: ReactNode }) => {
-  const [current, setCurrent] = useState<string>('');
+  const [current, setCurrent] = useState<string>("");
   const [isAnimating, setIsAnimating] = useState<boolean>(false);
   const [buttonRect, setButtonRect] = useState<RectType | null>(null);
 
@@ -50,7 +50,7 @@ export const Dropdown = ({ children }: { children: ReactNode }) => {
     setIsAnimating(true);
     setTimeout(() => {
       setIsAnimating(false);
-      setCurrent('');
+      setCurrent("");
     }, 300);
   }, []);
 
@@ -92,9 +92,9 @@ export const DropdownMenu = ({
       !sticky ? setScroll(scrollY) : setScroll(0);
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
     return () => {
-      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener("scroll", handleScroll);
     };
   }, [sticky]);
 
@@ -103,15 +103,15 @@ export const DropdownMenu = ({
   return createPortal(
     <div
       ref={ref}
-      className={`fixed ${isAnimating ? 'animate-out' : 'animate-in'}`}
+      className={`fixed ${isAnimating ? "animate-out" : "animate-in"}`}
       style={{
-        top: buttonRect.height + 20 + buttonRect.top - scroll + 'px',
-        left: buttonRect.left + buttonRect.width / 2 + 'px',
+        top: buttonRect.height + 20 + buttonRect.top - scroll + "px",
+        left: buttonRect.left + buttonRect.width / 2 + "px",
       }}
     >
       {children}
     </div>,
-    document.body
+    document.body,
   );
 };
 
@@ -127,7 +127,7 @@ export const DropdownToggle = ({
 
   const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.stopPropagation();
-    current !== name || current === '' ? open(name) : close();
+    current !== name || current === "" ? open(name) : close();
     const rect = e.currentTarget.getBoundingClientRect();
     getButtonRect(rect);
   };

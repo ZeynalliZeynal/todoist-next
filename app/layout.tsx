@@ -1,17 +1,23 @@
-import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
-import '@/app/_styles/globals.css';
-import Header from './_layout/header/Header';
+import type { Metadata } from "next";
+import { Indie_Flower, Inter } from "next/font/google";
+import React from "react";
+import "@/app/_styles/globals.css";
+import Header from "@/app/_layout/header/Header";
 
-const inter = Inter({ subsets: ['latin'], display: 'swap' });
+const indieFlower = Indie_Flower({
+  subsets: ["latin"],
+  weight: ["400"],
+});
+
+const inter = Inter({ subsets: ["latin"], display: "swap" });
 
 export const metadata: Metadata = {
   title: {
-    template: '%s | Todoist',
-    default: 'Todoist | A To-Do List to Organize Your Work & Life',
+    template: "%s | Todoist",
+    default: "Todoist | A To-Do List to Organize Your Work & Life",
   },
   description:
-    'Todoist is the productivity tool you need to get work and life organized. Collect tasks, organize projects, and plan your day.',
+    "Todoist is the productivity tool you need to get work and life organized. Collect tasks, organize projects, and plan your day.",
 };
 
 export default function RootLayout({
@@ -20,14 +26,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang='en'>
+    <html lang="en">
       <body
         suppressHydrationWarning={true}
-        className={`${inter.className} bg-background-100 text-gray-1000 flex flex-col antialiased min-h-screen`}
+        className={`${indieFlower.className} ${inter.className}`}
       >
         <Header />
-        <div className='flex-1 grid'>
-          <main className='w-full'>{children}</main>
+        <div className="flex flex-col ">
+          <div className="flex-1 grid">
+            <main className="w-full">{children}</main>
+          </div>
         </div>
       </body>
     </html>
