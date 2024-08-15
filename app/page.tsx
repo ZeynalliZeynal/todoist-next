@@ -2,8 +2,12 @@ import Container from "@/app/_components/Container";
 import Button from "@/app/_components/Button";
 import { IoLogoVercel } from "react-icons/io5";
 import Image from "next/image";
+import { auth } from "@/app/_lib/auth";
 
-const Page = () => {
+const Page = async () => {
+  const data = await auth();
+  console.log(data);
+
   return (
     <>
       <section>

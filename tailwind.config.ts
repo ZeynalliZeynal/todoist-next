@@ -127,6 +127,9 @@ const config: Config = {
           1000: "var(--ds-pink-1000)",
         },
       },
+      borderColor: {
+        DEFAULT: "var(--ds-gray-alpha-400)",
+      },
       boxShadow: {
         "header-border": "var(--header-border)",
       },

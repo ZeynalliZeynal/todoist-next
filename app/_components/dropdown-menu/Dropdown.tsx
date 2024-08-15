@@ -19,7 +19,7 @@ type RectType = Record<
   number
 >;
 
-interface IDropdown {
+interface Dropdown {
   current: string;
   open: (name: string) => void;
   close: () => void;
@@ -28,7 +28,7 @@ interface IDropdown {
   getButtonRect: (rect: RectType) => void;
 }
 
-const DropdownContext = createContext<IDropdown | null>(null);
+const DropdownContext = createContext<Dropdown | null>(null);
 
 const useDropdown = () => {
   const context = useContext(DropdownContext);
@@ -103,7 +103,7 @@ export const DropdownMenu = ({
   return createPortal(
     <div
       ref={ref}
-      className={`fixed ${isAnimating ? "animate-out" : "animate-in"}`}
+      className={`fixed z-[500] ${isAnimating ? "animate-out" : "animate-in"}`}
       style={{
         top: buttonRect.height + 20 + buttonRect.top - scroll + "px",
         left: buttonRect.left + buttonRect.width / 2 + "px",
