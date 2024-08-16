@@ -1,6 +1,6 @@
 import Link from "next/link";
-import { LuLogOut } from "react-icons/lu";
 import { signOutAction } from "@/app/_lib/auth/actions";
+import NavLogoutButton from "@/app/_layout/header/navbar/NavLogoutButton";
 
 const UserDropdown = ({
   name,
@@ -28,9 +28,7 @@ const UserDropdown = ({
         Account settings
       </Link>
       <form action={signOutAction}>
-        <button className="h-10 justify-between px-2 rounded-lg hover:bg-gray-alpha-100 w-full hover:text-gray-1000">
-          Log out <LuLogOut />
-        </button>
+        <NavLogoutButton />
       </form>
     </div>
   );

@@ -11,6 +11,7 @@ interface Button {
   icon?: ReactNode;
   primary?: true;
   onClick?: () => void;
+  disabled?: boolean;
 }
 
 const Button = ({
@@ -22,6 +23,7 @@ const Button = ({
   icon = null,
   primary,
   onClick,
+  disabled,
   rounded = "lg",
 }: Button) => {
   if (type === "link")
@@ -40,12 +42,13 @@ const Button = ({
 
   return (
     <button
-      className={`font-medium border ${
+      className={`font-medium border disabled:opacity-80 ${
         primary
           ? "text-gray-1000 border-gray-alpha-400 bg-background-100 hover:bg-gray-alpha-200"
           : "text-background-100 border-gray-200 bg-gray-1000 hover:bg-button-bg-hover"
       } ${size === "md" ? "px-3 h-8" : size === "lg" ? "px-3.5 h-12" : ""} ${full ? "w-full" : "w-fit"} rounded-${rounded}`}
       onClick={onClick}
+      disabled={disabled}
     >
       {icon} <span className="px-2">{children}</span>
     </button>

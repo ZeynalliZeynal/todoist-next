@@ -1,9 +1,11 @@
 import Button from "@/app/_components/Button";
 import { FcGoogle } from "react-icons/fc";
-import { IoLogoGithub } from "react-icons/io5";
 import type { Metadata } from "next";
 import InputLarge from "@/app/_components/form-components/Input";
 import { signInAction } from "@/app/_lib/auth/actions";
+import FormButton from "@/app/_components/FormButton";
+import { IoLogoGithub } from "react-icons/io5";
+import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Log in",
@@ -21,14 +23,9 @@ const Page = () => {
               await signInAction("google");
             }}
           >
-            <Button
-              size="lg"
-              full
-              primary
-              icon={<FcGoogle className="size-5" />}
-            >
-              Continue with Google
-            </Button>
+            <FormButton icon={<FcGoogle className="size-5" />}>
+              Google
+            </FormButton>
           </form>
 
           <form
@@ -37,17 +34,12 @@ const Page = () => {
               await signInAction("github");
             }}
           >
-            <Button
-              size="lg"
-              full
-              primary
-              icon={<IoLogoGithub className="size-5" />}
-            >
-              Continue with Github
-            </Button>
+            <FormButton icon={<IoLogoGithub className="size-5" />}>
+              Github
+            </FormButton>
           </form>
         </div>
-        <form action="/auth/login" className="space-y-4" method="post">
+        <form action="/api/auth/signIn" className="space-y-4">
           <InputLarge
             type="email"
             name="email"
@@ -64,6 +56,18 @@ const Page = () => {
             Login
           </Button>
         </form>
+        <div className="space-y-4 text-xs">
+          <p>
+            By continuing with Google, Apple, or Email, you agree to Todoist’s
+            Terms of Service and Privacy Policy.
+          </p>
+          <p className="text-center">
+            Don’t have an account?{" "}
+            <Link href="/auth/signUp" className="underline">
+              Sign up
+            </Link>
+          </p>
+        </div>
       </div>
     </div>
   );

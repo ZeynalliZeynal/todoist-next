@@ -139,10 +139,19 @@ const config: Config = {
           "0 0 0 1px var(--ds-gray-alpha-600),0 0 0 4px hsla(0,0%,100%,.24)",
       },
       animation: {
+        spinner: "spinner 1.2s linear infinite",
         in: "in 300ms forwards",
         out: "out 300ms forwards",
       },
       keyframes: {
+        spinner: {
+          from: {
+            opacity: "1",
+          },
+          to: {
+            opacity: "0.15",
+          },
+        },
         in: {
           from: {
             transform: "translate(-50%, -0.5rem)",
