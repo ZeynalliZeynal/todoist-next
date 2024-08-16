@@ -2,12 +2,8 @@ import Container from "@/app/_components/Container";
 import Button from "@/app/_components/Button";
 import { IoLogoVercel } from "react-icons/io5";
 import Image from "next/image";
-import { auth } from "@/app/_lib/auth";
 
 const Page = async () => {
-  const data = await auth();
-  console.log(data);
-
   return (
     <>
       <section>
@@ -23,6 +19,7 @@ const Page = async () => {
             <Button
               size="lg"
               href="/"
+              rounded="full"
               icon={<IoLogoVercel className="size-3.5" />}
             >
               Start for free

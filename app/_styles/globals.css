@@ -10,6 +10,7 @@
         &.light-mode {
             --ds-background-100: #ffffff;
             --ds-background-200: #fafafa;
+            --ds-foreground: #000;
 
             --ds-gray-100: #f2f2f2;
             --ds-gray-200: #ebebeb;
@@ -118,6 +119,7 @@
         &.dark-mode {
             --ds-background-100: #000000;
             --ds-background-200: #0a0a0a;
+            --ds-foreground: #fff;
 
             --ds-gray-100: #1a1a1a;
             --ds-gray-200: #1f1f1f;
@@ -218,7 +220,7 @@
             --ds-pink-900: #f75f8f;
             --ds-pink-1000: #feecf4;
 
-            --button-bg-hover-dark: var(--ds-gray-alpha-900);
+            --button-bg-hover-dark: #ccc;
 
             --header-border: 0 1px 0 0 #ffffff1a;
         }

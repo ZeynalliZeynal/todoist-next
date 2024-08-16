@@ -18,6 +18,10 @@ span {
     display: inline-flex;
 }
 
+input {
+    all: unset;
+}
+
 img, svg {
     user-select: none;
 }

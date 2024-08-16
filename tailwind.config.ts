@@ -14,6 +14,9 @@ const config: Config = {
       colors: {
         "button-bg-hover": "var(--button-bg-hover-dark)",
         header: { white: "#fff", black: "#000" },
+        foreground: {
+          DEFAULT: "var(--ds-foreground)",
+        },
         background: {
           100: "var(--ds-background-100)",
           200: "var(--ds-background-200)",
@@ -132,6 +135,8 @@ const config: Config = {
       },
       boxShadow: {
         "header-border": "var(--header-border)",
+        input:
+          "0 0 0 1px var(--ds-gray-alpha-600),0 0 0 4px hsla(0,0%,100%,.24)",
       },
       animation: {
         in: "in 300ms forwards",
