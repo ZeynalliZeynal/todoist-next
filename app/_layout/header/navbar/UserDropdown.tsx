@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { LuLogOut } from "react-icons/lu";
+import { signOutAction } from "@/app/_lib/auth/actions";
 
 const UserDropdown = ({
   name,
@@ -9,7 +10,7 @@ const UserDropdown = ({
   email?: string | null;
 }) => {
   return (
-    <div className="text-sm p-2 rounded-lg border text-gray-900">
+    <div className="text-sm p-2 rounded-lg border text-gray-900 bg-background-100">
       <div className="px-2 py-3 flex flex-col gap-1">
         <div className="font-semibold text-gray-1000">{name}</div>
         <div>{email}</div>
@@ -26,9 +27,9 @@ const UserDropdown = ({
       >
         Account settings
       </Link>
-      <form action="/auth/logout" method="post">
+      <form action={signOutAction}>
         <button className="h-10 justify-between px-2 rounded-lg hover:bg-gray-alpha-100 w-full hover:text-gray-1000">
-          Logout <LuLogOut />
+          Log out <LuLogOut />
         </button>
       </form>
     </div>

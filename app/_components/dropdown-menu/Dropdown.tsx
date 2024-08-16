@@ -42,11 +42,13 @@ export const Dropdown = ({ children }: { children: ReactNode }) => {
   const [buttonRect, setButtonRect] = useState<RectType | null>(null);
 
   const open = (name: string) => {
+    document.body.style.overflowX = "hidden";
     setCurrent(name);
     setIsAnimating(false);
   };
 
   const close = useCallback(() => {
+    document.body.style.overflowX = "auto";
     setIsAnimating(true);
     setTimeout(() => {
       setIsAnimating(false);

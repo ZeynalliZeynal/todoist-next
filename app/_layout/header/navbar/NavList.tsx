@@ -26,14 +26,14 @@ const NavList = async () => {
           </Link>
         </li>
         <Dropdown>
-          <DropdownToggle name="test">
+          <DropdownToggle name="nav">
             <li>
               <button className={`${className} gap-1 group`}>
                 Resources <BiChevronDown />
               </button>
             </li>
           </DropdownToggle>
-          <DropdownMenu sticky name="test">
+          <DropdownMenu sticky name="nav">
             <DropdownList />
           </DropdownMenu>
         </Dropdown>
