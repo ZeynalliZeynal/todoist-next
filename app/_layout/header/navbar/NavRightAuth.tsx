@@ -10,7 +10,6 @@ import { auth } from "@/app/_lib/auth/auth";
 
 const NavRightAuth = async () => {
   const session = await auth();
-  console.log(session);
 
   if (session)
     return (
