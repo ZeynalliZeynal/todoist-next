@@ -1,5 +1,5 @@
-import Container from "@/app/_components/Container";
-import Logo from "@/app/_components/icons/Logo";
+import Container from "@/app/_components/container";
+import Logo from "@/app/_components/icons/logo";
 import NavList from "./navbar/NavList";
 import Link from "next/link";
 

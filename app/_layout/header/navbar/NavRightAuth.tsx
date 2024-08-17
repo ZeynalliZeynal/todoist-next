@@ -1,4 +1,4 @@
-import Button from "@/app/_components/Button";
+import Button from "@/app/_components/button";
 import {
   Dropdown,
   DropdownMenu,

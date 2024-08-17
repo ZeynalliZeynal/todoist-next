@@ -2,7 +2,7 @@ import { HTMLInputTypeAttribute } from "react";
 
 interface Input {
   type: HTMLInputTypeAttribute;
-  name: string;
+  name?: string;
   placeholder: string;
   value?: string | number | readonly string[];
   onChange?: () => void;
@@ -18,6 +18,7 @@ const InputLarge = ({
   onChange,
   required,
   disabled,
+  ...props
 }: Input) => {
   return (
     <div className="flex rounded-lg border overflow-hidden text-foreground h-12 font-semibold focus-within:shadow-input transition">
@@ -30,6 +31,7 @@ const InputLarge = ({
         required={required}
         disabled={disabled}
         className="px-3 transition-all placeholder-gray-600 size-full"
+        {...props}
       />
     </div>
   );

@@ -1,9 +1,9 @@
-import Button from "@/app/_components/Button";
+import Button from "@/app/_components/button";
 import { FcGoogle } from "react-icons/fc";
 import type { Metadata } from "next";
-import InputLarge from "@/app/_components/form-components/Input";
+import InputLarge from "@/app/_components/form-components/input";
 import { signInAction } from "@/app/_lib/auth/actions";
-import FormButton from "@/app/_components/FormButton";
+import FormButton from "@/app/_components/form-button";
 import { IoLogoGithub } from "react-icons/io5";
 import Link from "next/link";
 

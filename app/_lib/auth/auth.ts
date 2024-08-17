@@ -9,19 +9,12 @@ export const {
   signOut,
   handlers: { GET, POST },
 } = NextAuth({
-  providers: [
-    Google({
-      clientId: process.env.AUTH_GOOGLE_ID,
-      clientSecret: process.env.AUTH_GOOGLE_SECRET,
-    }),
-    GitHub,
-  ],
+  providers: [Google, GitHub],
   callbacks: {
     authorized: ({ auth, request }) => {
       return !!auth?.user;
     },
     signIn: async ({ user, account, profile }) => {
-      console.log(user, account, profile);
       try {
         const existingUser = await getUser(user.email);
 

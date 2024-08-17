@@ -1,11 +1,10 @@
-import Button from "@/app/_components/Button";
 import { FcGoogle } from "react-icons/fc";
 import type { Metadata } from "next";
-import InputLarge from "@/app/_components/form-components/Input";
 import { signInAction } from "@/app/_lib/auth/actions";
-import FormButton from "@/app/_components/FormButton";
+import FormButton from "@/app/_components/form-button";
 import { IoLogoGithub } from "react-icons/io5";
 import Link from "next/link";
+import SignInForm from "@/app/(auth)/auth/signIn/sign-in-form";
 
 export const metadata: Metadata = {
   title: "Log in",
@@ -39,23 +38,7 @@ const Page = () => {
             </FormButton>
           </form>
         </div>
-        <form action="/api/auth/signIn" className="space-y-4">
-          <InputLarge
-            type="email"
-            name="email"
-            placeholder="Email Address"
-            required
-          />
-          <InputLarge
-            type="password"
-            name="password"
-            placeholder="Password"
-            required
-          />
-          <Button size="lg" full>
-            Login
-          </Button>
-        </form>
+        <SignInForm />
         <div className="space-y-4 text-xs">
           <p>
             By continuing with Google, Apple, or Email, you agree to Todoist’s

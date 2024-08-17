@@ -1,7 +1,7 @@
 "use client";
 
 import { useFormStatus } from "react-dom";
-import Spinner from "@/app/_components/Spinner";
+import Spinner from "@/app/_components/spinner";
 import { LuLogOut } from "react-icons/lu";
 
 const NavLogoutButton = () => {
