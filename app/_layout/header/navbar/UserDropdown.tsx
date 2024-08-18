@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { signOutAction } from "@/app/_lib/auth/actions";
+import { logOutSocial } from "@/app/_lib/auth/actions";
 import NavLogoutButton from "@/app/_layout/header/navbar/NavLogoutButton";
 
 const UserDropdown = ({
@@ -27,7 +27,7 @@ const UserDropdown = ({
       >
         Account settings
       </Link>
-      <form action={signOutAction}>
+      <form action={logOutSocial}>
         <NavLogoutButton />
       </form>
     </div>

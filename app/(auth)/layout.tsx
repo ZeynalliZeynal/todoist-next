@@ -1,6 +1,6 @@
 import { Indie_Flower, Inter } from "next/font/google";
 import React from "react";
-import "@/app/_styles/globals.css";
+import "@/app/globals.css";
 import Logo from "@/app/_components/icons/logo";
 import Link from "next/link";
 import type { Metadata } from "next";

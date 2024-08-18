@@ -1,25 +1,23 @@
-import { FcGoogle } from "react-icons/fc";
-import type { Metadata } from "next";
-import { signInAction } from "@/app/_lib/auth/actions";
+import { logInSocial } from "@/app/_lib/auth/actions";
 import FormButton from "@/app/_components/form-button";
+import { FcGoogle } from "react-icons/fc";
 import { IoLogoGithub } from "react-icons/io5";
 import Link from "next/link";
-import SignInForm from "@/app/(auth)/auth/signIn/sign-in-form";
+import LoginForm from "@/app/(auth)/auth/login/login-form";
+import RegisterForm from "@/app/(auth)/auth/register/register-form";
 
-export const metadata: Metadata = {
-  title: "Log in",
-};
-
-const Page = () => {
+const AuthPage = ({ type }: { type: "login" | "register" }) => {
   return (
     <div className="grid grid-cols-2">
       <div className="flex flex-col gap-10">
-        <h1 className="text-[2rem] font-bold">Log in</h1>
+        <h1 className="text-[2rem] font-bold">
+          {type === "login" ? "Log in" : "Sign up"}
+        </h1>
         <div className="space-y-4 w-full">
           <form
             action={async () => {
               "use server";
-              await signInAction("google");
+              await logInSocial("google");
             }}
           >
             <FormButton icon={<FcGoogle className="size-5" />}>
@@ -30,7 +28,7 @@ const Page = () => {
           <form
             action={async () => {
               "use server";
-              await signInAction("github");
+              await logInSocial("github");
             }}
           >
             <FormButton icon={<IoLogoGithub className="size-5" />}>
@@ -38,17 +36,28 @@ const Page = () => {
             </FormButton>
           </form>
         </div>
-        <SignInForm />
+        {type === "login" ? <LoginForm /> : <RegisterForm />}
         <div className="space-y-4 text-xs">
           <p>
             By continuing with Google, Apple, or Email, you agree to Todoist’s
             Terms of Service and Privacy Policy.
           </p>
           <p className="text-center">
-            Don’t have an account?{" "}
-            <Link href="/auth/signUp" className="underline">
-              Sign up
-            </Link>
+            {type === "login" ? (
+              <>
+                Don’t have an account?{" "}
+                <Link href="/auth/register" className="underline">
+                  Register now
+                </Link>
+              </>
+            ) : (
+              <>
+                Already logged in?{" "}
+                <Link href="/auth/login" className="underline">
+                  Go to log in
+                </Link>
+              </>
+            )}
           </p>
         </div>
       </div>
@@ -56,4 +65,4 @@ const Page = () => {
   );
 };
 
-export default Page;
+export default AuthPage;
