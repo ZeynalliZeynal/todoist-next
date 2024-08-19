@@ -3,10 +3,11 @@
 import { signIn, signOut } from "@/app/_lib/auth/auth";
 import { z } from "zod";
 import { LoginSchema, RegisterSchema } from "@/app/_schemas";
-import bcrypt from "bcrypt";
+import bcrypt from "bcryptjs";
 import { AuthError } from "next-auth";
 import prisma from "@/app/_lib/prisma/prisma";
 
+// todo: find a way of redirecting user on server side
 export const logInCredentials = async (
   formData: z.infer<typeof LoginSchema>,
 ) => {
@@ -22,7 +23,6 @@ export const logInCredentials = async (
       password,
       redirect: false,
     });
-    return { success: "Successful" };
   } catch (error) {
     if (error instanceof AuthError) {
       switch (error.type) {
@@ -62,11 +62,9 @@ export const registerCredentials = async (
     data: {
       name,
       email,
-      password,
+      password: hashedPassword,
     },
   });
-
-  return { success: "Please verify your email" };
 };
 
 export const logInSocial = async (provider: string) => {

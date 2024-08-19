@@ -4,6 +4,7 @@ import Google from "next-auth/providers/google";
 import GitHub from "next-auth/providers/github";
 import { LoginSchema } from "@/app/_schemas";
 import { getUserByEmail } from "@/app/_lib/prisma/apiUsers";
+import bcrypt from "bcryptjs";
 
 // todo: fix type bug
 
@@ -20,8 +21,15 @@ export default {
         const { email, password } = validatedFields.data;
 
         const user = await getUserByEmail(email);
-        if (user && user.password === password) return user;
-        else return null;
+
+        if (user && user.password) {
+          const isPasswordMatched = await bcrypt.compare(
+            password,
+            user.password,
+          );
+          if (isPasswordMatched) return user;
+          else return null;
+        } else return null;
       },
     }),
   ],

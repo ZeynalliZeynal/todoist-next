@@ -9,6 +9,8 @@ import { logInCredentials } from "@/app/_lib/auth/actions";
 import { useState, useTransition } from "react";
 import { z } from "zod";
 import Spinner from "@/app/_components/spinner";
+import { redirect } from "next/navigation";
+import { DEFAULT_LOGIN_REDIRECT } from "@/routes";
 
 const LoginForm = () => {
   const [responseStatus, setResponseStatus] = useState<{
@@ -39,7 +41,10 @@ const LoginForm = () => {
   const onSubmit = (formData: z.infer<typeof LoginSchema>) => {
     startTransition(async () => {
       const res = await logInCredentials(formData);
-      showMessage(res?.error, res?.success);
+
+      if (res?.error) {
+        showMessage(res.error);
+      } else redirect(DEFAULT_LOGIN_REDIRECT);
       reset();
     });
   };

@@ -9,6 +9,8 @@ import { useState, useTransition } from "react";
 import { z } from "zod";
 import { registerCredentials } from "@/app/_lib/auth/actions";
 import Spinner from "@/app/_components/spinner";
+import { redirect } from "next/navigation";
+import { DEFAULT_LOGIN_REDIRECT } from "@/routes";
 
 const RegisterForm = () => {
   const [responseStatus, setResponseStatus] = useState<{
@@ -40,7 +42,9 @@ const RegisterForm = () => {
   const onSubmit = (formData: z.infer<typeof RegisterSchema>) => {
     startTransition(async () => {
       const res = await registerCredentials(formData);
-      showMessage(res.error, res.success);
+      if (res?.error) {
+        showMessage(res.error);
+      } else redirect(DEFAULT_LOGIN_REDIRECT);
       reset();
     });
   };

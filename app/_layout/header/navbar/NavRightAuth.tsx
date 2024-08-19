@@ -6,7 +6,7 @@ import {
 } from "@/app/_components/dropdown-menu/Dropdown";
 import { generateRandomGradient } from "@/app/_utils/generateRandomBg";
 import UserDropdown from "@/app/_layout/header/navbar/UserDropdown";
-import { auth } from "@/app/_lib/auth/auth";
+import { auth } from "@/app/api/auth/[...nextauth]/route";
 
 const NavRightAuth = async () => {
   const session = await auth();

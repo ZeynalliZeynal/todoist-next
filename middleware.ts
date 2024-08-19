@@ -1,5 +1,5 @@
-import { auth } from "@/app/_lib/auth/auth";
 import { authRoutes, DEFAULT_LOGIN_REDIRECT, publicRoutes } from "@/routes";
+import { auth } from "@/app/_lib/auth/auth";
 
 export default auth(async function middleware(req) {
   const { nextUrl } = req;
