@@ -6,10 +6,12 @@ import {
 } from "@/app/_components/dropdown-menu/Dropdown";
 import { generateRandomGradient } from "@/app/_utils/generateRandomBg";
 import UserDropdown from "@/app/_layout/header/navbar/UserDropdown";
-import { auth } from "@/app/api/auth/[...nextauth]/route";
+import { auth } from "@/app/_lib/auth/auth";
 
 const NavRightAuth = async () => {
   const session = await auth();
+  // const isAdmin = session?.user.role === "ADMIN";
+  const isAdmin = true;
 
   if (session)
     return (
@@ -34,7 +36,11 @@ const NavRightAuth = async () => {
           </button>
         </DropdownToggle>
         <DropdownMenu name="user-dropdown" sticky>
-          <UserDropdown name={session.user?.name} email={session.user?.email} />
+          <UserDropdown
+            name={session.user?.name}
+            email={session.user?.email}
+            isAdmin={isAdmin}
+          />
         </DropdownMenu>
       </Dropdown>
     );
