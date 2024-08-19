@@ -20,6 +20,7 @@ export const logInCredentials = async (
     await signIn("credentials", {
       email,
       password,
+      redirect: false,
     });
     return { success: "Successful" };
   } catch (error) {
