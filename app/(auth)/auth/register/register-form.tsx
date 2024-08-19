@@ -34,7 +34,7 @@ const RegisterForm = () => {
 
   const showMessage = (error?: string, success?: string) => {
     setResponseStatus({ error, success });
-    setTimeout(() => setResponseStatus({ error: "", success: "" }), 3000);
+    setTimeout(() => setResponseStatus({ error: "", success: "" }), 5000);
   };
 
   const onSubmit = (formData: z.infer<typeof RegisterSchema>) => {

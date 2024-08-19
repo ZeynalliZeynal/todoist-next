@@ -8,7 +8,7 @@ import RegisterForm from "@/app/(auth)/auth/register/register-form";
 
 const AuthPage = ({ type }: { type: "login" | "register" }) => {
   return (
-    <div className="grid grid-cols-2">
+    <div className="grid grid-cols-1">
       <div className="flex flex-col gap-10">
         <h1 className="text-[2rem] font-bold">
           {type === "login" ? "Log in" : "Sign up"}

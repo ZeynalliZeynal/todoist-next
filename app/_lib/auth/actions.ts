@@ -4,9 +4,8 @@ import { signIn, signOut } from "@/app/_lib/auth/auth";
 import { z } from "zod";
 import { LoginSchema, RegisterSchema } from "@/app/_schemas";
 import bcrypt from "bcrypt";
-import prisma from "@/app/_lib/prisma";
 import { AuthError } from "next-auth";
-import { DEFAULT_LOGIN_REDIRECT } from "@/routes";
+import prisma from "@/app/_lib/prisma/prisma";
 
 export const logInCredentials = async (
   formData: z.infer<typeof LoginSchema>,
@@ -21,19 +20,20 @@ export const logInCredentials = async (
     await signIn("credentials", {
       email,
       password,
-      redirectTo: DEFAULT_LOGIN_REDIRECT,
     });
-    return { success: "You are successfully logged in" };
-  } catch (err) {
-    if (err instanceof AuthError) {
-      switch (err.type) {
+    return { success: "Successful" };
+  } catch (error) {
+    if (error instanceof AuthError) {
+      switch (error.type) {
         case "CredentialsSignin":
-          return { error: "Invalid credentials!" };
+          return {
+            error: "Couldn't find such a user",
+          };
         default:
-          return { error: "Something went wrong!" };
+          return { error: "Something went wrong" };
       }
     }
-    throw err;
+    throw error;
   }
 };
 
@@ -49,7 +49,7 @@ export const registerCredentials = async (
 
   // const hasRecord = await prisma.user.count();
 
-  const existingUser = await prisma.user.findFirst({
+  const existingUser = await prisma.user.findUnique({
     where: {
       email,
     },
@@ -61,7 +61,7 @@ export const registerCredentials = async (
     data: {
       name,
       email,
-      password: hashedPassword,
+      password,
     },
   });
 

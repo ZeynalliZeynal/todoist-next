@@ -8,6 +8,7 @@ import Message from "@/app/_components/form-components/message";
 import { logInCredentials } from "@/app/_lib/auth/actions";
 import { useState, useTransition } from "react";
 import { z } from "zod";
+import Spinner from "@/app/_components/spinner";
 
 const LoginForm = () => {
   const [responseStatus, setResponseStatus] = useState<{
@@ -18,7 +19,7 @@ const LoginForm = () => {
     success: "",
   });
   const [isPending, startTransition] = useTransition();
-  const { handleSubmit, register, formState } = useForm<
+  const { handleSubmit, register, formState, reset } = useForm<
     z.infer<typeof LoginSchema>
   >({
     resolver: zodResolver(LoginSchema),
@@ -28,15 +29,20 @@ const LoginForm = () => {
     },
   });
 
+  const showMessage = (error?: string, success?: string) => {
+    setResponseStatus({ error, success });
+    setTimeout(() => setResponseStatus({ error: "", success: "" }), 5000);
+  };
+
   const { errors } = formState;
 
   const onSubmit = (formData: z.infer<typeof LoginSchema>) => {
     startTransition(async () => {
       const res = await logInCredentials(formData);
-      setResponseStatus({ error: res.error, success: res.success });
+      showMessage(res?.error, res?.success);
+      reset();
     });
   };
-
   return (
     <form noValidate onSubmit={handleSubmit(onSubmit)} className="space-y-4">
       <div className="flex flex-col gap-2">
@@ -77,7 +83,12 @@ const LoginForm = () => {
       {responseStatus.success && (
         <Message type="success">{responseStatus.success}</Message>
       )}{" "}
-      <Button size="lg" full>
+      <Button
+        size="lg"
+        full
+        disabled={isPending}
+        icon={isPending ? <Spinner /> : undefined}
+      >
         Log in
       </Button>
     </form>

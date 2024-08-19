@@ -1,7 +1,7 @@
 import NextAuth from "next-auth";
-import Google from "next-auth/providers/google";
-import GitHub from "next-auth/providers/github";
-import { createUser, getUser } from "@/app/_lib/supabase/apiUsers";
+import { PrismaAdapter } from "@auth/prisma-adapter";
+import authConfig from "@/auth.config";
+import prisma from "@/app/_lib/prisma/prisma";
 
 export const {
   auth,
@@ -9,6 +9,15 @@ export const {
   signOut,
   handlers: { GET, POST },
 } = NextAuth({
+  adapter: PrismaAdapter(prisma),
+  session: {
+    strategy: "jwt",
+  },
+  ...authConfig,
+});
+
+/*
+
   providers: [Google, GitHub],
   callbacks: {
     authorized: ({ auth, request }) => {
@@ -40,4 +49,4 @@ export const {
   pages: {
     signIn: "/auth/signIn",
   },
-});
+ */
