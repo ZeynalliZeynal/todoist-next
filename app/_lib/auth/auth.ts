@@ -1,9 +1,9 @@
-import { UserRole } from "@prisma/client";
 import NextAuth from "next-auth";
 import { PrismaAdapter } from "@auth/prisma-adapter";
 import authConfig from "@/auth.config";
 import prisma from "@/app/_lib/prisma/prisma";
 import { getUserById } from "@/app/_lib/prisma/apiUsers";
+import { UserRole } from "@prisma/client";
 
 // todo: solve edge runtime bug for prisma
 
@@ -14,6 +14,10 @@ export const {
   handlers: { GET, POST },
 } = NextAuth({
   callbacks: {
+    signIn: async ({ user }) => {
+      console.log(user);
+      return true;
+    },
     session: ({ token, session, user }) => {
       if (token.sub && session.user) session.user.id = token.sub;
       if (token.role && session.user)

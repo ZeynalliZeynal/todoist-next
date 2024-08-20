@@ -1,4 +1,9 @@
-import { authRoutes, DEFAULT_LOGIN_REDIRECT, publicRoutes } from "@/routes";
+import {
+  adminPrefix,
+  authRoutes,
+  DEFAULT_LOGIN_REDIRECT,
+  publicRoutes,
+} from "@/routes";
 import { auth } from "@/app/_lib/auth/auth";
 
 export default auth(async function middleware(req) {
@@ -7,6 +12,9 @@ export default auth(async function middleware(req) {
   const isAuthRoutes = authRoutes.includes(nextUrl.pathname);
   const isPublicRoutes = publicRoutes.includes(nextUrl.pathname);
 
+  const isAdminRoute = nextUrl.pathname.startsWith(adminPrefix);
+  const isAdmin = req.auth?.user.role === "ADMIN";
+
   if (isAuthRoutes) {
     if (isLoggedIn)
       return Response.redirect(new URL(DEFAULT_LOGIN_REDIRECT, nextUrl));
@@ -14,6 +22,10 @@ export default auth(async function middleware(req) {
   }
   if (!isLoggedIn && !isPublicRoutes)
     return Response.redirect(new URL("/auth/login", nextUrl));
+
+  if (isAdminRoute) {
+    if (!isAdmin) return new Response("Not found", { status: 404 });
+  }
 
   return undefined;
 });

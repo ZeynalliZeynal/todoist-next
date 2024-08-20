@@ -1,13 +1,12 @@
 "use server";
 
-import { signIn, signOut } from "@/app/_lib/auth/auth";
+import { signIn } from "@/app/_lib/auth/auth";
 import { z } from "zod";
 import { LoginSchema, RegisterSchema } from "@/app/_schemas";
 import bcrypt from "bcryptjs";
 import { AuthError } from "next-auth";
 import prisma from "@/app/_lib/prisma/prisma";
 
-// todo: find a way of redirecting user on server side
 export const logInCredentials = async (
   formData: z.infer<typeof LoginSchema>,
 ) => {
@@ -58,19 +57,14 @@ export const registerCredentials = async (
 
   if (existingUser) return { error: "Email is already in use" };
 
+  const role = process.env.ADMIN_EMAIL === email ? "ADMIN" : "USER";
+
   await prisma.user.create({
     data: {
       name,
       email,
       password: hashedPassword,
+      role,
     },
   });
-};
-
-export const logInSocial = async (provider: string) => {
-  await signIn(provider, { redirectTo: "/" });
-};
-
-export const logOutSocial = async () => {
-  await signOut({ redirectTo: "/" });
 };

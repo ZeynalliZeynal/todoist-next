@@ -9,9 +9,18 @@ import bcrypt from "bcryptjs";
 // todo: fix type bug
 
 export default {
+  pages: {
+    signIn: "/auth/login",
+  },
   providers: [
-    Google,
-    GitHub,
+    Google({
+      clientId: process.env.AUTH_GOOGLE_ID,
+      clientSecret: process.env.AUTH_GOOGLE_SECRET,
+    }),
+    GitHub({
+      clientId: process.env.AUTH_GITHUB_ID,
+      clientSecret: process.env.AUTH_GITHUB_SECRET,
+    }),
     Credentials({
       authorize: async (credentials, request) => {
         const validatedFields = LoginSchema.safeParse(credentials);
@@ -33,9 +42,6 @@ export default {
       },
     }),
   ],
-  pages: {
-    signIn: "/auth/login",
-  },
 } satisfies NextAuthConfig;
 
 /*

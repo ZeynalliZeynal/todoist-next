@@ -1,7 +1,7 @@
 import Link from "next/link";
-import { logOutSocial } from "@/app/_lib/auth/actions";
 import NavLogoutButton from "@/app/_layout/header/navbar/NavLogoutButton";
 import { ChartBarMiddle } from "@/app/_components/icons/geist-icons";
+import { signOut } from "@/app/_lib/auth/auth";
 
 const UserDropdown = ({
   name,
@@ -41,7 +41,11 @@ const UserDropdown = ({
           Admin Dashboard <ChartBarMiddle size={14} />
         </Link>
       )}
-      <form action={logOutSocial}>
+      <form
+        action={async () => {
+          await signOut({ redirectTo: "/" });
+        }}
+      >
         <NavLogoutButton />
       </form>
     </div>

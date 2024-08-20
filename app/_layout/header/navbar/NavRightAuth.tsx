@@ -10,8 +10,7 @@ import { auth } from "@/app/_lib/auth/auth";
 
 const NavRightAuth = async () => {
   const session = await auth();
-  // const isAdmin = session?.user.role === "ADMIN";
-  const isAdmin = true;
+  const isAdmin = session?.user.role === "ADMIN";
 
   if (session)
     return (
@@ -27,8 +26,8 @@ const NavRightAuth = async () => {
           >
             {session.user?.image && (
               <img
-                src={session.user.image}
-                alt={session.user.name || "user"}
+                src={session.user?.image}
+                alt={session.user?.name || "user"}
                 width={30}
                 height={30}
               />
