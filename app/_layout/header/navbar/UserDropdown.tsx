@@ -19,7 +19,7 @@ const UserDropdown = ({
         <div>{email}</div>
       </div>
       <Link
-        href="/account/dashboard"
+        href="/account/today"
         className="h-10 justify-start px-2 rounded-lg hover:bg-gray-alpha-100 w-full hover:text-gray-1000"
       >
         Dashboard

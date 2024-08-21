@@ -1,9 +1,11 @@
 import { Indie_Flower, Inter } from "next/font/google";
 import React from "react";
 import "@/app/globals.css";
-import Logo from "@/app/_components/icons/logo";
-import Link from "next/link";
 import type { Metadata } from "next";
+import SidebarProvider from "@/app/_context/sidebar-context";
+import SidebarWrapper from "@/app/_components/account/sidebar/sidebar-wrapper";
+import Sidebar from "@/app/_components/account/sidebar/sidebar";
+import MainWrapper from "@/app/_components/account/main/main-wrapper";
 
 const indieFlower = Indie_Flower({
   subsets: ["latin"],
@@ -15,10 +17,10 @@ const inter = Inter({ subsets: ["latin"], display: "swap" });
 export const metadata: Metadata = {
   title: {
     template: "%s to Todoist",
-    default: "Todoist | A To-Do List to Organize Your Work & Life",
+    default: "Todoist",
   },
   description:
-    "Todoist is the productivity tool you need to get work and life organized. Collect tasks, organize projects, and plan your day.",
+    "Trusted by 35+ million people and teams, the Todoist app is the world's favorite task manager and to-do list app. Organize your work and life, finally.",
 };
 
 export default function Layout({
@@ -28,18 +30,17 @@ export default function Layout({
 }>) {
   return (
     <html lang="en">
-      <body
-        suppressHydrationWarning={true}
-        className={`${indieFlower.className} ${inter.className}`}
-      >
-        <main className="flex justify-center w-[calc(100vw-1.5rem)] h-screen p-6">
-          <div className="max-w-4xl w-full flex gap-8 flex-col">
-            <Link href="/" className="pb-8 justify-start">
-              <Logo />
-            </Link>
-            <div className="pt-8">{children}</div>
-          </div>
-        </main>
+      <body suppressHydrationWarning={true} className={inter.className}>
+        <div className="w-screen h-screen">
+          <SidebarProvider>
+            <div className="flex justify-end size-full relative">
+              <SidebarWrapper>
+                <Sidebar />
+              </SidebarWrapper>
+              <MainWrapper>{children}</MainWrapper>
+            </div>
+          </SidebarProvider>
+        </div>
       </body>
     </html>
   );

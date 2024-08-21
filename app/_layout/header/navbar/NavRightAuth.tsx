@@ -4,9 +4,9 @@ import {
   DropdownMenu,
   DropdownToggle,
 } from "@/app/_components/dropdown-menu/Dropdown";
-import { generateRandomGradient } from "@/app/_utils/generateRandomBg";
 import UserDropdown from "@/app/_layout/header/navbar/UserDropdown";
 import { auth } from "@/app/_lib/auth/auth";
+import UserImage from "@/app/_components/user-image";
 
 const NavRightAuth = async () => {
   const session = await auth();
@@ -16,22 +16,8 @@ const NavRightAuth = async () => {
     return (
       <Dropdown>
         <DropdownToggle name="user-dropdown">
-          <button
-            className="size-[30px] rounded-full hover:opacity-90 overflow-hidden"
-            style={
-              !session.user?.image
-                ? { background: generateRandomGradient() }
-                : undefined
-            }
-          >
-            {session.user?.image && (
-              <img
-                src={session.user?.image}
-                alt={session.user?.name || "user"}
-                width={30}
-                height={30}
-              />
-            )}
+          <button className="size-[30px] rounded-full hover:opacity-90 overflow-hidden">
+            <UserImage image={session.user.image} name={session.user.name} />
           </button>
         </DropdownToggle>
         <DropdownMenu name="user-dropdown" sticky>

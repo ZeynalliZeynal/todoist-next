@@ -20,10 +20,12 @@ export const {
         where: { id: user.id },
         data: {
           emailVerified: new Date(),
+          role: user.email === process.env.ADMIN_EMAIL ? "ADMIN" : "USER",
         },
       });
     },
   },
+
   callbacks: {
     session: ({ token, session, user }) => {
       if (token.sub && session.user) session.user.id = token.sub;
