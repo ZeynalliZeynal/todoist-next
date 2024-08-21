@@ -9,9 +9,6 @@ import bcrypt from "bcryptjs";
 // todo: fix type bug
 
 export default {
-  pages: {
-    signIn: "/auth/login",
-  },
   providers: [
     Google({
       clientId: process.env.AUTH_GOOGLE_ID,
@@ -43,17 +40,3 @@ export default {
     }),
   ],
 } satisfies NextAuthConfig;
-
-/*
-
-
-        if (!user || !user.password) return null;
-        else {
-          const matchedPassword = await bcrypt.compare(
-            validatedFields.data.password,
-            user.password,
-          );
-          if (matchedPassword) return user;
-          else return null;
-        }
- */

@@ -51,3 +51,7 @@ model User {
 
   @@map("users")
 }
+
+model VerificationToken {
+  id String @id @default(cuid())
+}

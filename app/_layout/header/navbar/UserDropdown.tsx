@@ -43,6 +43,7 @@ const UserDropdown = ({
       )}
       <form
         action={async () => {
+          "use server";
           await signOut({ redirectTo: "/" });
         }}
       >

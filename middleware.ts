@@ -1,5 +1,6 @@
 import {
   adminPrefix,
+  apiAuthPrefix,
   authRoutes,
   DEFAULT_LOGIN_REDIRECT,
   publicRoutes,
@@ -12,8 +13,16 @@ export default auth(async function middleware(req) {
   const isAuthRoutes = authRoutes.includes(nextUrl.pathname);
   const isPublicRoutes = publicRoutes.includes(nextUrl.pathname);
 
+  const isApiAuthRoutes = nextUrl.pathname.startsWith(apiAuthPrefix);
+
   const isAdminRoute = nextUrl.pathname.startsWith(adminPrefix);
   const isAdmin = req.auth?.user.role === "ADMIN";
+
+  if (isApiAuthRoutes) {
+    if (isLoggedIn)
+      return Response.redirect(new URL(DEFAULT_LOGIN_REDIRECT, nextUrl));
+    return undefined;
+  }
 
   if (isAuthRoutes) {
     if (isLoggedIn)

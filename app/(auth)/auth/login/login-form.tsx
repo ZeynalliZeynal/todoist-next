@@ -6,10 +6,10 @@ import { LoginSchema } from "@/app/_schemas";
 import { zodResolver } from "@hookform/resolvers/zod";
 import Message from "@/app/_components/form-components/message";
 import { logInCredentials } from "@/app/_lib/auth/actions";
-import { useState, useTransition } from "react";
+import { useEffect, useState, useTransition } from "react";
 import { z } from "zod";
 import Spinner from "@/app/_components/spinner";
-import { redirect } from "next/navigation";
+import { redirect, useSearchParams } from "next/navigation";
 import { DEFAULT_LOGIN_REDIRECT } from "@/routes";
 
 const LoginForm = () => {
@@ -21,6 +21,9 @@ const LoginForm = () => {
     success: "",
   });
   const [isPending, startTransition] = useTransition();
+
+  const params = useSearchParams();
+
   const { handleSubmit, register, formState, reset } = useForm<
     z.infer<typeof LoginSchema>
   >({
@@ -35,6 +38,11 @@ const LoginForm = () => {
     setResponseStatus({ error, success });
     setTimeout(() => setResponseStatus({ error: "", success: "" }), 5000);
   };
+
+  useEffect(() => {
+    if (params.get("error") === "OAuthAccountNotLinked")
+      showMessage("Email is already in use");
+  }, [params]);
 
   const { errors } = formState;
 

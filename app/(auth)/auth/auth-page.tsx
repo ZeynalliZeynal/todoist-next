@@ -5,6 +5,7 @@ import Link from "next/link";
 import LoginForm from "@/app/(auth)/auth/login/login-form";
 import RegisterForm from "@/app/(auth)/auth/register/register-form";
 import { signIn } from "@/app/_lib/auth/auth";
+import { DEFAULT_LOGIN_REDIRECT } from "@/routes";
 
 const AuthPage = ({ type }: { type: "login" | "register" }) => {
   return (
@@ -17,7 +18,7 @@ const AuthPage = ({ type }: { type: "login" | "register" }) => {
           <form
             action={async () => {
               "use server";
-              await signIn("google", { redirectTo: "/" });
+              await signIn("google", { redirectTo: DEFAULT_LOGIN_REDIRECT });
             }}
           >
             <FormButton icon={<FcGoogle className="size-5" />}>
@@ -28,7 +29,7 @@ const AuthPage = ({ type }: { type: "login" | "register" }) => {
           <form
             action={async () => {
               "use server";
-              await signIn("github", { redirectTo: "/" });
+              await signIn("github", { redirectTo: DEFAULT_LOGIN_REDIRECT });
             }}
           >
             <FormButton icon={<IoLogoGithub className="size-5" />}>
