@@ -41,6 +41,8 @@ export default function SidebarProvider({ children }: { children: ReactNode }) {
   >(undefined);
   const sidebarRef = useRef<HTMLElement | null>(null);
 
+  console.log(active);
+
   useEffect(() => {
     if (sidebarRef.current) {
       const rect = sidebarRef.current.getBoundingClientRect();

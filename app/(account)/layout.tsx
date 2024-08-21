@@ -5,7 +5,8 @@ import type { Metadata } from "next";
 import SidebarProvider from "@/app/_context/sidebar-context";
 import SidebarWrapper from "@/app/_components/account/sidebar/sidebar-wrapper";
 import Sidebar from "@/app/_components/account/sidebar/sidebar";
-import MainWrapper from "@/app/_components/account/main/main-wrapper";
+import MainWrapper from "@/app/_components/account/layout/main/main-wrapper";
+import AccountHeader from "@/app/_components/account/layout/header/account-header";
 
 const indieFlower = Indie_Flower({
   subsets: ["latin"],
@@ -37,7 +38,10 @@ export default function Layout({
               <SidebarWrapper>
                 <Sidebar />
               </SidebarWrapper>
-              <MainWrapper>{children}</MainWrapper>
+              <MainWrapper>
+                <AccountHeader />
+                {children}
+              </MainWrapper>
             </div>
           </SidebarProvider>
         </div>
