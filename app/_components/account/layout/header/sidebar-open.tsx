@@ -1,6 +1,6 @@
 "use client";
 
-import IconButton from "@/app/_components/IconButton";
+import IconButton from "@/app/_components/icon-button";
 import { useSideBar } from "@/app/_context/sidebar-context";
 import { BsLayoutSidebar } from "react-icons/bs";
 import { clsx } from "clsx";

@@ -13,7 +13,7 @@ export default function IconButton({
   return (
     <button
       className={clsx(
-        "hover:bg-[var(--hover-bg)] text-foreground rounded-md size-8",
+        "hover:bg-gray-alpha-200 text-foreground rounded-md size-8 border",
         className,
       )}
       onClick={onClick}

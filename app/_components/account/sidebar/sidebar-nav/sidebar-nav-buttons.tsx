@@ -7,6 +7,7 @@ import {
   DialogOpen,
   DialogWrapper,
 } from "@/app/_components/dialog/dialog";
+import AddTaskDialog from "@/app/_components/account/sidebar/sidebar-add/add-task-dialog";
 
 export default function SidebarNavButtons() {
   return (
@@ -19,7 +20,7 @@ export default function SidebarNavButtons() {
           </button>
         </DialogOpen>
         <DialogWrapper name="add-task">
-          <div className="p-4">asdfadfad</div>
+          <AddTaskDialog />
         </DialogWrapper>
       </li>
       <li>

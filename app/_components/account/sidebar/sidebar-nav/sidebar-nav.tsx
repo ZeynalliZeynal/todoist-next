@@ -1,8 +1,8 @@
 import { GoInbox } from "react-icons/go";
 import { CiGrid41 } from "react-icons/ci";
 import { PiCalendarDotsLight } from "react-icons/pi";
-import SidebarNavLink from "@/app/_components/account/sidebar/sidebar-nav-link";
-import SidebarNavButtons from "@/app/_components/account/sidebar/sidebar-nav-buttons";
+import SidebarNavButtons from "@/app/_components/account/sidebar/sidebar-nav/sidebar-nav-buttons";
+import SidebarNavLink from "@/app/_components/account/sidebar/sidebar-nav/sidebar-nav-link";
 
 export default function SidebarNav() {
   return (

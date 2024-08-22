@@ -34,9 +34,9 @@ const Button = ({
           primary
             ? "text-gray-1000 border-gray-alpha-400 bg-background-100 hover:bg-gray-alpha-200"
             : "text-background-100 border-gray-200 bg-gray-1000 hover:bg-button-bg-hover"
-        } ${size === "md" ? "px-3 h-8" : size === "lg" ? "px-3.5 h-12" : ""} ${full ? "w-full" : "w-fit"} rounded-${rounded}`}
+        } ${size === "md" ? "px-2.5 h-10 text-sm" : size === "lg" ? "px-3.5 h-12" : "text-sm h-8 px-1.5"} ${full ? "w-full" : "w-fit"} rounded-${rounded}`}
       >
-        {icon} <span className="px-2">{children}</span>
+        {icon} <span className="px-1.5">{children}</span>
       </Link>
     );
 
@@ -46,11 +46,11 @@ const Button = ({
         primary
           ? "text-gray-1000 border-gray-alpha-400 bg-background-100 hover:bg-gray-alpha-200 disabled:bg-gray-100 disabled:text-gray-700 disabled:border-gray-400"
           : "text-background-100 border-gray-200 bg-gray-1000 hover:bg-button-bg-hover disabled:bg-gray-1000 disabled:text-gray-700 disabled:border-gray-900"
-      } ${size === "md" ? "px-3 h-8" : size === "lg" ? "px-3.5 h-12" : ""} ${full ? "w-full" : "w-fit"} rounded-${rounded}`}
+      } ${size === "md" ? "px-2.5 h-10 text-sm" : size === "lg" ? "px-3.5 h-12" : "text-sm h-8 px-1.5"} ${full ? "w-full" : "w-fit"} rounded-${rounded}`}
       onClick={onClick}
       disabled={disabled}
     >
-      {icon} <span className="px-2">{children}</span>
+      {icon} <span className="px-1.5">{children}</span>
     </button>
   );
 };

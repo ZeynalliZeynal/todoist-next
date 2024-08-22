@@ -2,7 +2,7 @@ import { Session } from "@auth/core/types";
 import UserImage from "@/app/_components/user-image";
 import ProgressBar from "@/app/_components/progress-bar";
 import { IoChevronDown } from "react-icons/io5";
-import SidebarHeadRight from "@/app/_components/account/sidebar/sidebar-head-right";
+import SidebarHeadRight from "@/app/_components/account/sidebar/sidebar-head/sidebar-head-right";
 
 export default function SidebarHead({ session }: { session: Session | null }) {
   const tasks = 42;

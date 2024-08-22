@@ -2,7 +2,7 @@
 
 import { BsLayoutSidebar } from "react-icons/bs";
 import { useSideBar } from "@/app/_context/sidebar-context";
-import IconButton from "@/app/_components/IconButton";
+import IconButton from "@/app/_components/icon-button";
 import { clsx } from "clsx";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
