@@ -11,7 +11,7 @@ export default function SidebarHead({ session }: { session: Session | null }) {
 
   return (
     <div className="flex p-3 justify-between">
-      <button className="flex items-center gap-2 hover:bg-[var(--hover-bg)] py-1 px-2 rounded-md">
+      <button className="flex items-center gap-2 hover:bg-[var(--hover-bg)] py-1 px-2 rounded-[var(--rounded)]">
         <div className="flex relative rounded-full size-7">
           <span className="absolute size-full top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
             <ProgressBar

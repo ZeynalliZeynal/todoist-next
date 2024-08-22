@@ -1,0 +1,32 @@
+"use client";
+
+import Link from "next/link";
+import { ReactNode } from "react";
+import { usePathname } from "next/navigation";
+import { clsx } from "clsx";
+
+export default function SidebarNavLink({
+  href,
+  children,
+}: {
+  href: string;
+  children: ReactNode;
+}) {
+  const pathname = usePathname();
+
+  return (
+    <li>
+      <Link
+        href={href}
+        className={clsx(
+          "rounded-[var(--rounded)] px-2 h-8 hover:bg-[var(--hover-bg)] w-full justify-start gap-1.5",
+          {
+            "bg-gray-100": pathname === href,
+          },
+        )}
+      >
+        {children}
+      </Link>
+    </li>
+  );
+}

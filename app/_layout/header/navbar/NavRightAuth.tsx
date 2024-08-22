@@ -20,7 +20,7 @@ const NavRightAuth = async () => {
             <UserImage image={session.user.image} name={session.user.name} />
           </button>
         </DropdownToggle>
-        <DropdownMenu name="user-dropdown" sticky>
+        <DropdownMenu name="user-dropdown" sticky position="left">
           <UserDropdown
             name={session.user?.name}
             email={session.user?.email}

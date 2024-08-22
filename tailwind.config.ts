@@ -143,6 +143,8 @@ const config: Config = {
         spinner: "spinner 1.1s linear infinite",
         in: "in 300ms forwards",
         out: "out 300ms forwards",
+        fadeIn: "fadeIn 300ms forwards",
+        fadeOut: "fadeOut 300ms forwards",
       },
       keyframes: {
         spinner: {
@@ -155,21 +157,37 @@ const config: Config = {
         },
         in: {
           from: {
-            transform: "translate(-50%, -0.5rem)",
+            transform: "translateY(-2rem)",
             opacity: "0",
           },
           to: {
-            transform: "translate(-50%, 0)",
+            transform: "translateY(0)",
             opacity: "1",
           },
         },
         out: {
           from: {
-            transform: "translate(-50%, 0)",
+            transform: "translateY(0)",
             opacity: "1",
           },
           to: {
-            transform: "translate(-50%, -0.5rem)",
+            transform: "translateY(-2rem)",
+            opacity: "0",
+          },
+        },
+        fadeIn: {
+          from: {
+            opacity: "0",
+          },
+          to: {
+            opacity: "1",
+          },
+        },
+        fadeOut: {
+          from: {
+            opacity: "1",
+          },
+          to: {
             opacity: "0",
           },
         },

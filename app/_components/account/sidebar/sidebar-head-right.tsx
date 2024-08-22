@@ -17,7 +17,7 @@ export default function SidebarHeadRight() {
       <Link
         href="/account/notifications"
         className={clsx("size-9 rounded-lg hover:bg-[var(--hover-bg)]", {
-          "bg-[var(--hover-bg)]": pathname === "/account/notifications",
+          "bg-gray-100": pathname === "/account/notifications",
         })}
       >
         <IoNotificationsOutline className="size-5" />

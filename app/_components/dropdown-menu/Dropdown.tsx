@@ -13,6 +13,8 @@ import React, {
   useState,
 } from "react";
 import { createPortal } from "react-dom";
+import { clsx } from "clsx";
+import { motion } from "framer-motion";
 
 type RectType = Record<
   "top" | "height" | "left" | "right" | "width" | "bottom",
@@ -79,11 +81,13 @@ export const Dropdown = ({ children }: { children: ReactNode }) => {
 export const DropdownMenu = ({
   name,
   children,
+  position = "center",
   sticky = false,
 }: {
-  children: ReactElement;
+  children: ReactNode;
   name: string;
   sticky?: boolean;
+  position: "center" | "left" | "right";
 }) => {
   const { isAnimating, current, close, buttonRect } = useDropdown();
   const [scroll, setScroll] = useState<number>(0);
@@ -100,19 +104,39 @@ export const DropdownMenu = ({
     };
   }, [sticky]);
 
+  console.log(buttonRect);
+
   if (current !== name) return null;
 
   return createPortal(
-    <div
+    <motion.div
       ref={ref}
-      className={`fixed z-[500] ${isAnimating ? "animate-out" : "animate-in"}`}
+      className={clsx("fixed z-[500]")}
+      animate={
+        !isAnimating
+          ? {
+              x: position === "center" ? ["-50%", "-50%"] : undefined,
+              y: ["-2rem", 0],
+              opacity: [0, 1],
+            }
+          : {
+              x: position === "center" ? ["-50%", "-50%"] : undefined,
+              y: [0, "-2rem"],
+              opacity: [1, 0],
+            }
+      }
       style={{
         top: buttonRect.height + 20 + buttonRect.top - scroll + "px",
-        left: buttonRect.left + buttonRect.width / 2 + "px",
+        left:
+          position === "center"
+            ? buttonRect.left - buttonRect.width + "px"
+            : position === "left"
+              ? buttonRect.left + "px"
+              : undefined,
       }}
     >
       {children}
-    </div>,
+    </motion.div>,
     document.body,
   );
 };
