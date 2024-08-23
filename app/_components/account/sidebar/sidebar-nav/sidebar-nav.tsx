@@ -3,6 +3,7 @@ import { CiGrid41 } from "react-icons/ci";
 import { PiCalendarDotsLight } from "react-icons/pi";
 import SidebarNavButtons from "@/app/_components/account/sidebar/sidebar-nav/sidebar-nav-buttons";
 import SidebarNavLink from "@/app/_components/account/sidebar/sidebar-nav/sidebar-nav-link";
+import { IoCalendarClearOutline } from "react-icons/io5";
 
 export default function SidebarNav() {
   return (
@@ -14,9 +15,9 @@ export default function SidebarNav() {
           Inbox
         </SidebarNavLink>
         <SidebarNavLink href="/account/today">
-          <div className="size-5 rounded-sm border border-foreground relative">
-            <span className="absolute top-1 w-[80%] left-1/2 -translate-x-1/2 bg-foreground h-[1px] rounded-md" />
-            <span className="absolute top-[1px] text-[10px] left-1/2 -translate-x-1/2">
+          <div className="relative size-5">
+            <IoCalendarClearOutline className="absolute size-full" />
+            <span className="absolute text-[10px] top-[calc(50%+2px)] -translate-y-1/2 left-1/2 -translate-x-1/2">
               {new Date().getDate()}
             </span>
           </div>

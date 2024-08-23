@@ -19,9 +19,9 @@ export default function SidebarNavLink({
       <Link
         href={href}
         className={clsx(
-          "rounded-[var(--rounded)] px-2 h-8 hover:bg-[var(--hover-bg)] w-full justify-start gap-1.5",
+          "rounded-[var(--rounded)] hover:text-foreground px-2 h-8 hover:bg-[var(--hover-bg)] w-full justify-start gap-1.5",
           {
-            "bg-gray-100": pathname === href,
+            "bg-gray-100 text-foreground": pathname === href,
           },
         )}
       >

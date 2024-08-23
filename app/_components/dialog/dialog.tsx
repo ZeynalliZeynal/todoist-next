@@ -11,7 +11,6 @@ import {
 } from "react";
 import { createPortal } from "react-dom";
 import { useOutsideClick } from "@/app/_hooks/useOutsideClick";
-import { IoClose } from "react-icons/io5";
 import { clsx } from "clsx";
 
 import { motion } from "framer-motion";
@@ -120,14 +119,7 @@ export const DialogOpen = ({
   return cloneElement(children, { onClick: () => open(name) });
 };
 
-export const DialogClose = ({ children }: { children: ReactNode }) => {
+export const DialogClose = ({ children }: { children: ReactElement }) => {
   const { close } = useDialog();
-  return (
-    <button
-      className="size-6 text-gray-900 hover:text-foreground"
-      onClick={close}
-    >
-      <IoClose />
-    </button>
-  );
+  return cloneElement(children, { onClick: close });
 };

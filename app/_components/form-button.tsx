@@ -14,7 +14,7 @@ const FormButton = ({
   const { pending } = useFormStatus();
 
   return (
-    <Button size="lg" full primary icon={icon} disabled={pending}>
+    <Button type="submit" size="lg" full primary icon={icon} disabled={pending}>
       Continue with {children}
     </Button>
   );

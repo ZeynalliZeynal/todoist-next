@@ -105,6 +105,7 @@ const RegisterForm = () => {
         <Message type="success">{responseStatus.success}</Message>
       )}{" "}
       <Button
+        type="submit"
         size="lg"
         full
         disabled={isPending}

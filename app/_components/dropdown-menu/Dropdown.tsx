@@ -87,7 +87,7 @@ export const DropdownMenu = ({
   children: ReactNode;
   name: string;
   sticky?: boolean;
-  position: "center" | "left" | "right";
+  position?: "center" | "left" | "right";
 }) => {
   const { isAnimating, current, close, buttonRect } = useDropdown();
   const [scroll, setScroll] = useState<number>(0);
@@ -103,8 +103,6 @@ export const DropdownMenu = ({
       window.removeEventListener("scroll", handleScroll);
     };
   }, [sticky]);
-
-  console.log(buttonRect);
 
   if (current !== name) return null;
 
@@ -129,7 +127,7 @@ export const DropdownMenu = ({
         top: buttonRect.height + 20 + buttonRect.top - scroll + "px",
         left:
           position === "center"
-            ? buttonRect.left - buttonRect.width + "px"
+            ? buttonRect.left + buttonRect.width / 2 + "px"
             : position === "left"
               ? buttonRect.left + "px"
               : undefined,

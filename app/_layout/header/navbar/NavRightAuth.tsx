@@ -20,7 +20,7 @@ const NavRightAuth = async () => {
             <UserImage image={session.user.image} name={session.user.name} />
           </button>
         </DropdownToggle>
-        <DropdownMenu name="user-dropdown" sticky position="left">
+        <DropdownMenu name="user-dropdown" sticky>
           <UserDropdown
             name={session.user?.name}
             email={session.user?.email}
@@ -31,12 +31,8 @@ const NavRightAuth = async () => {
     );
   return (
     <div className="flex items-center gap-2">
-      <Button primary type="link" href="/auth/login">
-        Login
-      </Button>
-      <Button type="link" href="/auth/register">
-        Start for free
-      </Button>
+      <Button href="/auth/login">Login</Button>
+      <Button href="/auth/register">Start for free</Button>
     </div>
   );
 };

@@ -11,13 +11,13 @@ import { HiOutlineDotsHorizontal } from "react-icons/hi";
 export default function AddDialogButtons() {
   return (
     <div className="flex gap-2">
-      <Button type="button" size="sm" icon={<PiCalendarBlankThin />} primary>
+      <Button size="sm" icon={<PiCalendarBlankThin />} primary>
         Due date
       </Button>
-      <Button type="button" size="sm" icon={<CiFlag1 />} primary>
+      <Button size="sm" icon={<CiFlag1 />} primary>
         Priority
       </Button>
-      <Button type="button" size="sm" icon={<IoAlarmOutline />} primary>
+      <Button size="sm" icon={<IoAlarmOutline />} primary>
         Reminders{" "}
         <Badge color="amber-900" bg="amber-200">
           Upgrade

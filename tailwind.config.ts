@@ -14,6 +14,7 @@ const config: Config = {
       },
       colors: {
         "button-bg-hover": "var(--button-bg-hover-dark)",
+        "button-bg-disabled": "var(--button-bg-disabled-dark)",
         header: { white: "#fff", black: "#000" },
         foreground: {
           DEFAULT: "var(--ds-foreground)",

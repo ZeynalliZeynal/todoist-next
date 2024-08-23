@@ -8,7 +8,7 @@ export default function AddTaskDialog() {
   const [formData, setFormData] = useState({ name: "", description: "" });
 
   return (
-    <form className="">
+    <form>
       <div className="flex flex-col gap-2 p-6">
         <div className="flex flex-col gap-1">
           <input
@@ -37,7 +37,10 @@ export default function AddTaskDialog() {
         </div>
         <AddDialogButtons />
       </div>
-      <AddDialogBottom />
+      <AddDialogBottom
+        name={formData.name}
+        reset={() => setFormData({ name: "", description: "" })}
+      />
     </form>
   );
 }

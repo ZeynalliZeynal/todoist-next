@@ -14,7 +14,7 @@ export default function SidebarNavButtons() {
     <Dialog>
       <li>
         <DialogOpen name="add-task">
-          <button className="rounded-[var(--rounded)] px-2 h-8 hover:bg-[var(--hover-bg)] w-full justify-start gap-1.5">
+          <button className="rounded-[var(--rounded)] hover:text-foreground px-2 h-8 hover:bg-[var(--hover-bg)] w-full justify-start gap-1.5">
             <GoPlus className="size-5" />
             Add task
           </button>
@@ -24,7 +24,7 @@ export default function SidebarNavButtons() {
         </DialogWrapper>
       </li>
       <li>
-        <button className="rounded-[var(--rounded)] px-2 h-8 hover:bg-[var(--hover-bg)] w-full justify-start gap-1.5">
+        <button className="rounded-[var(--rounded)] hover:text-foreground px-2 h-8 hover:bg-[var(--hover-bg)] w-full justify-start gap-1.5">
           <IoSearchOutline className="size-5" />
           Search
         </button>
