@@ -139,6 +139,7 @@ const config: Config = {
         "header-border": "var(--header-border)",
         input:
           "0 0 0 1px var(--ds-gray-alpha-600),0 0 0 4px hsla(0,0%,100%,.24)",
+        border: "0 0 0 1px var(--ds-gray-alpha-400)",
       },
       animation: {
         spinner: "spinner 1.1s linear infinite",

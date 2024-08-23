@@ -22,7 +22,7 @@ interface Dialog {
   isAnimating: boolean;
 }
 
-const useDialog = () => {
+export const useDialog = () => {
   const context = useContext(DialogContext);
   if (!context) throw new Error("Dropdown cannot be used outside the provider");
   return context;

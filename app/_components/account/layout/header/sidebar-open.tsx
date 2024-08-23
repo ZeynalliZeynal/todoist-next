@@ -9,14 +9,16 @@ export default function SidebarOpen() {
   const { setActive, active } = useSideBar();
 
   return (
-    <IconButton
-      onClick={() => setActive(true)}
-      className={clsx("transition-all duration-500", {
-        "-translate-x-[57px]": active,
-        "translate-x-0": !active,
-      })}
-    >
-      <BsLayoutSidebar />
-    </IconButton>
+    <div className="flex items-center">
+      <IconButton
+        onClick={() => setActive(true)}
+        className={clsx("transition-all duration-500", {
+          "-translate-x-[57px]": active,
+          "translate-x-0": !active,
+        })}
+      >
+        <BsLayoutSidebar />
+      </IconButton>
+    </div>
   );
 }

@@ -4,12 +4,14 @@ import { useOutsideClick } from "@/app/_hooks/useOutsideClick";
 import React, {
   cloneElement,
   createContext,
+  Dispatch,
+  forwardRef,
   ReactElement,
   ReactNode,
+  SetStateAction,
   useCallback,
   useContext,
   useEffect,
-  useRef,
   useState,
 } from "react";
 import { createPortal } from "react-dom";
@@ -27,7 +29,7 @@ interface Dropdown {
   close: () => void;
   isAnimating: boolean;
   buttonRect: any;
-  getButtonRect: (rect: RectType) => void;
+  setButtonRect: Dispatch<SetStateAction<RectType | null>>;
 }
 
 const DropdownContext = createContext<Dropdown | null>(null);
@@ -58,10 +60,6 @@ export const Dropdown = ({ children }: { children: ReactNode }) => {
     }, 300);
   }, []);
 
-  const getButtonRect = (rect: RectType) => {
-    setButtonRect(rect);
-  };
-
   return (
     <DropdownContext.Provider
       value={{
@@ -69,7 +67,7 @@ export const Dropdown = ({ children }: { children: ReactNode }) => {
         open,
         isAnimating,
         close,
-        getButtonRect,
+        setButtonRect,
         buttonRect,
       }}
     >
@@ -81,8 +79,8 @@ export const Dropdown = ({ children }: { children: ReactNode }) => {
 export const DropdownMenu = ({
   name,
   children,
-  position = "center",
   sticky = false,
+  position = "center",
 }: {
   children: ReactNode;
   name: string;
@@ -114,23 +112,27 @@ export const DropdownMenu = ({
         !isAnimating
           ? {
               x: position === "center" ? ["-50%", "-50%"] : undefined,
-              y: ["-2rem", 0],
+              y: ["-1rem", 0],
               opacity: [0, 1],
             }
           : {
               x: position === "center" ? ["-50%", "-50%"] : undefined,
-              y: [0, "-2rem"],
+              y: [0, "-1rem"],
               opacity: [1, 0],
             }
       }
       style={{
-        top: buttonRect.height + 20 + buttonRect.top - scroll + "px",
+        top: buttonRect.height + 16 + buttonRect.top - scroll + "px",
         left:
           position === "center"
             ? buttonRect.left + buttonRect.width / 2 + "px"
             : position === "left"
               ? buttonRect.left + "px"
               : undefined,
+        right:
+          position === "right"
+            ? window.innerWidth - buttonRect.width - buttonRect.left + "px"
+            : undefined,
       }}
     >
       {children}
@@ -139,22 +141,18 @@ export const DropdownMenu = ({
   );
 };
 
-export const DropdownToggle = ({
-  children,
-  name,
-}: {
-  children: ReactElement;
-  name: string;
-}) => {
-  const { current, open, close, getButtonRect } = useDropdown();
-  const ref = useRef<HTMLButtonElement | null>(null);
+export const DropdownToggle = forwardRef(
+  ({ children, name }: { children: ReactElement; name: string }, ref) => {
+    const { current, open, close, setButtonRect, buttonRect } = useDropdown();
 
-  const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
-    e.stopPropagation();
-    current !== name || current === "" ? open(name) : close();
-    const rect = e.currentTarget.getBoundingClientRect();
-    getButtonRect(rect);
-  };
+    const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+      e.stopPropagation();
+      current !== name || current === "" ? open(name) : close();
+      const rect = e.currentTarget.getBoundingClientRect();
+      setButtonRect(rect);
+      console.log(rect);
+    };
 
-  return cloneElement(children, { onClick: handleClick, ref });
-};
+    return cloneElement(children, { onClick: handleClick, ref });
+  },
+);

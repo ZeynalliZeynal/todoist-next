@@ -2,6 +2,8 @@ import { GoInbox } from "react-icons/go";
 import Button from "@/app/_components/button";
 import { DialogClose } from "@/app/_components/dialog/dialog";
 import { IoCaretDownOutline } from "react-icons/io5";
+import { useFormStatus } from "react-dom";
+import Spinner from "@/app/_components/spinner";
 
 export default function AddDialogBottom({
   name,
@@ -10,6 +12,8 @@ export default function AddDialogBottom({
   name?: string;
   reset: () => void;
 }) {
+  const { pending } = useFormStatus();
+
   return (
     <div className="px-6 py-4 border-t text-xs bg-background-200">
       <div className="flex justify-between items-center">
@@ -27,7 +31,11 @@ export default function AddDialogBottom({
               Cancel
             </Button>
           </DialogClose>
-          <Button type="submit" disabled={!name}>
+          <Button
+            type="submit"
+            disabled={!name || pending}
+            icon={pending ? <Spinner /> : null}
+          >
             Submit
           </Button>
         </div>

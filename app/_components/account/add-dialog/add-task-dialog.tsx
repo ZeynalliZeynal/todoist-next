@@ -1,20 +1,35 @@
 "use client";
 
-import AddDialogButtons from "@/app/_components/account/sidebar/sidebar-add/add-dialog-buttons";
-import AddDialogBottom from "@/app/_components/account/sidebar/sidebar-add/add-dialog-bottom";
 import { useState } from "react";
+import { addTask } from "@/app/_lib/actions/taskActions";
+import { useDialog } from "@/app/_components/dialog/dialog";
+import AddDialogButtons from "@/app/_components/account/add-dialog/add-dialog-buttons";
+import AddDialogBottom from "@/app/_components/account/add-dialog/add-dialog-bottom";
 
 export default function AddTaskDialog() {
-  const [formData, setFormData] = useState({ name: "", description: "" });
+  const [data, setFormData] = useState({ name: "", description: "" });
+  const { close } = useDialog();
+
+  const reset = () => setFormData({ name: "", description: "" });
 
   return (
-    <form>
+    <form
+      action={async (formData) => {
+        if (data.name) {
+          const res = await addTask(formData);
+          if (!res?.error) {
+            reset();
+            close();
+          }
+        }
+      }}
+    >
       <div className="flex flex-col gap-2 p-6">
         <div className="flex flex-col gap-1">
           <input
             type="text"
             name="name"
-            value={formData.name}
+            value={data.name}
             placeholder="Task name"
             className="text-xl placeholder:text-xl placeholder-gray-700 placeholder:font-semibold"
             onChange={({ target }) =>
@@ -24,7 +39,7 @@ export default function AddTaskDialog() {
           <input
             type="text"
             name="description"
-            value={formData.description}
+            value={data.description}
             placeholder="Description"
             className="text-xs placeholder-gray-700 placeholder:font-medium"
             onChange={({ target }) =>
@@ -37,10 +52,7 @@ export default function AddTaskDialog() {
         </div>
         <AddDialogButtons />
       </div>
-      <AddDialogBottom
-        name={formData.name}
-        reset={() => setFormData({ name: "", description: "" })}
-      />
+      <AddDialogBottom name={data.name} reset={reset} />
     </form>
   );
 }

@@ -16,9 +16,13 @@ export default function SidebarHeadRight() {
     <div className="flex justify-end items-center gap-2">
       <Link
         href="/account/notifications"
-        className={clsx("size-9 rounded-lg hover:bg-[var(--hover-bg)]", {
-          "bg-gray-100": pathname === "/account/notifications",
-        })}
+        className={clsx(
+          "size-9 rounded-lg hover:bg-[var(--hover-bg)] hover:text-foreground",
+          {
+            "bg-gray-100 text-foreground":
+              pathname === "/account/notifications",
+          },
+        )}
       >
         <IoNotificationsOutline className="size-5" />
       </Link>

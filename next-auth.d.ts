@@ -2,6 +2,7 @@ import { type DefaultSession } from "next-auth";
 import { UserRole } from "@prisma/client";
 
 export type ExtendedUser = DefaultSession["user"] & {
+  id: string;
   role: UserRole;
 };
 
