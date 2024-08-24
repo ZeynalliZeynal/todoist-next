@@ -58,6 +58,7 @@ model Task {
   createdAt   DateTime @default(now())
   name        String
   description String?
+  isCompleted Boolean  @default(false) @map("is_completed")
   userId      String   @map("user_id")
   user        User     @relation(fields: [userId], references: [id])
 

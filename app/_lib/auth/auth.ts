@@ -13,7 +13,11 @@ export const {
   signOut,
   handlers: { GET, POST },
 } = NextAuth({
-  pages: { signIn: "/auth/login", error: "/auth/error" },
+  pages: {
+    signIn: "/auth/login",
+    error: "/auth/error",
+    signOut: "/auth/logout",
+  },
   events: {
     linkAccount: async ({ user }) => {
       await prisma.user.update({

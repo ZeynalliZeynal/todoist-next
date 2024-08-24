@@ -7,7 +7,8 @@ import {
   Star,
 } from "@/app/_components/icons/geist-icons";
 import { BsPrinter } from "react-icons/bs";
-import { LuLogOut } from "react-icons/lu";
+import { signOut } from "@/app/_lib/auth/auth";
+import SidebarLogout from "@/app/_components/account/sidebar/sidebar-head/sidebar-dropdown/sidebar-logout";
 
 export default function SidebarDropdownMenu({
   name,
@@ -56,12 +57,16 @@ export default function SidebarDropdownMenu({
           </button>
         </div>
         <div className="w-full h-[1px] bg-gray-alpha-400" />
-        <div className="flex flex-col p-2">
-          <button className="justify-start gap-3 px-2 hover:text-foreground h-10 rounded-lg hover:bg-gray-200">
-            <LuLogOut />
-            Log out
-          </button>
-        </div>
+        {/*todo: fix logout bug*/}
+        <form
+          action={async () => {
+            "use server";
+            await signOut({ redirectTo: "/" });
+          }}
+          className="flex flex-col p-2"
+        >
+          <SidebarLogout />
+        </form>
       </div>
     </DropdownMenu>
   );

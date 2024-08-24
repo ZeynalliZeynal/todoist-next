@@ -6,7 +6,7 @@ import ProgressBar from "@/app/_components/progress-bar";
 import UserImage from "@/app/_components/user-image";
 import { IoChevronDown } from "react-icons/io5";
 import { auth } from "@/app/_lib/auth/auth";
-import SidebarDropdownMenu from "@/app/_components/account/sidebar/sidebar-head/sidebar-dropdown-menu";
+import SidebarDropdownMenu from "@/app/_components/account/sidebar/sidebar-head/sidebar-dropdown/sidebar-dropdown-menu";
 
 export default async function SidebarProfileDropdown() {
   const session = await auth();

@@ -31,8 +31,12 @@ const NavRightAuth = async () => {
     );
   return (
     <div className="flex items-center gap-2">
-      <Button href="/auth/login">Login</Button>
-      <Button href="/auth/register">Start for free</Button>
+      <Button size="sm" primary href="/auth/login">
+        Login
+      </Button>
+      <Button size="sm" href="/auth/register">
+        Start for free
+      </Button>
     </div>
   );
 };

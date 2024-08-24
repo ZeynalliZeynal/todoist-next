@@ -3,6 +3,12 @@ import Button from "@/app/_components/button";
 import { Plus } from "@/app/_components/icons/geist-icons";
 import prisma from "@/app/_lib/prisma/prisma";
 import CheckTask from "@/app/_components/CheckTask";
+import {
+  Dialog,
+  DialogOpen,
+  DialogWrapper,
+} from "@/app/_components/dialog/dialog";
+import AddTaskDialog from "@/app/_components/account/add-dialog/add-task-dialog";
 
 const Page = async () => {
   const session = await auth();
@@ -50,9 +56,16 @@ const Page = async () => {
                     </div>
                   ))}
                 </div>
-                <Button icon={<Plus size={14} />} size="sm">
-                  Add task
-                </Button>
+                <Dialog>
+                  <DialogOpen name="add-task">
+                    <Button icon={<Plus size={14} />} size="sm">
+                      Add task
+                    </Button>
+                  </DialogOpen>
+                  <DialogWrapper name="add-task">
+                    <AddTaskDialog />
+                  </DialogWrapper>
+                </Dialog>
               </div>
             </section>
           </div>

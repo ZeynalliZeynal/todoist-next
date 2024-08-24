@@ -2,6 +2,7 @@
 
 import { auth } from "@/app/_lib/auth/auth";
 import prisma from "@/app/_lib/prisma/prisma";
+import { revalidatePath } from "next/cache";
 
 export const addTask = async (formData: FormData) => {
   const name = formData.get("name")?.toString();
@@ -18,4 +19,10 @@ export const addTask = async (formData: FormData) => {
       description,
     },
   });
+
+  revalidatePath("/account/today");
+};
+
+export const completeTask = async (taskId) => {
+  // const
 };
