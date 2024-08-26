@@ -1,6 +1,6 @@
 "use server";
 
-import { signIn } from "@/app/_lib/auth/auth";
+import { signIn, signOut } from "@/app/_lib/auth/auth";
 import { z } from "zod";
 import { LoginSchema, RegisterSchema } from "@/app/_schemas";
 import bcrypt from "bcryptjs";
@@ -67,4 +67,8 @@ export const registerCredentials = async (
       role,
     },
   });
+};
+
+export const logOut = async () => {
+  await signOut({ redirectTo: "/" });
 };

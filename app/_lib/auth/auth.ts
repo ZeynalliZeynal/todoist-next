@@ -5,8 +5,6 @@ import prisma from "@/app/_lib/prisma/prisma";
 import { getUserById } from "@/app/_lib/prisma/apiUsers";
 import { UserRole } from "@prisma/client";
 
-// todo: solve edge runtime bug for prisma
-
 export const {
   auth,
   signIn,
@@ -16,7 +14,6 @@ export const {
   pages: {
     signIn: "/auth/login",
     error: "/auth/error",
-    signOut: "/auth/logout",
   },
   events: {
     linkAccount: async ({ user }) => {

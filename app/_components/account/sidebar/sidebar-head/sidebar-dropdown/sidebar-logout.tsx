@@ -9,7 +9,7 @@ export default function SidebarLogout() {
 
   return (
     <button
-      className="justify-start gap-3 px-2 hover:text-foreground h-10 rounded-lg hover:bg-gray-200 disabled:bg-background-100"
+      className='justify-start gap-3 px-2 hover:text-foreground h-10 rounded-lg hover:bg-gray-200 disabled:bg-background-100'
       disabled={pending}
     >
       {pending ? <Spinner /> : <LuLogOut />}

@@ -127,8 +127,8 @@ export const DropdownMenu = ({
           position === "center"
             ? buttonRect.left + buttonRect.width / 2 + "px"
             : position === "left"
-              ? buttonRect.left + "px"
-              : undefined,
+            ? buttonRect.left + "px"
+            : undefined,
         right:
           position === "right"
             ? window.innerWidth - buttonRect.width - buttonRect.left + "px"
@@ -137,7 +137,7 @@ export const DropdownMenu = ({
     >
       {children}
     </motion.div>,
-    document.body,
+    document.body
   );
 };
 
@@ -150,9 +150,8 @@ export const DropdownToggle = forwardRef(
       current !== name || current === "" ? open(name) : close();
       const rect = e.currentTarget.getBoundingClientRect();
       setButtonRect(rect);
-      console.log(rect);
     };
 
     return cloneElement(children, { onClick: handleClick, ref });
-  },
+  }
 );

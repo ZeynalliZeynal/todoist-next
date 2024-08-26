@@ -1,4 +1,4 @@
-import { Indie_Flower, Inter } from "next/font/google";
+import { Inter } from "next/font/google";
 import React from "react";
 import "@/app/globals.css";
 import type { Metadata } from "next";
@@ -8,11 +8,6 @@ import Sidebar from "@/app/_components/account/sidebar/sidebar";
 import MainWrapper from "@/app/_components/account/layout/main/main-wrapper";
 import AccountHeader from "@/app/_components/account/layout/header/account-header";
 import { ModeSwitcher } from "@/app/_context/mode-switcher-context";
-
-const indieFlower = Indie_Flower({
-  subsets: ["latin"],
-  weight: ["400"],
-});
 
 const inter = Inter({ subsets: ["latin"], display: "swap" });
 
