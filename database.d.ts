@@ -5,3 +5,12 @@ interface User {
   name: string;
   image?: string;
 }
+
+interface Task {
+  id: string;
+  createdAt?: Date;
+  name: string;
+  description: string | null;
+  userId: string | null;
+  isCompleted: boolean;
+}

@@ -8,7 +8,7 @@ export default function MainWrapper({ children }: { children: ReactNode }) {
 
   return (
     <main
-      className="transition-all duration-500 overflow-hidden"
+      className="transition-all duration-500 overflow-x-hidden"
       style={{
         width: active ? `calc(100% - ${sideBarRect?.width}px)` : "100%",
       }}

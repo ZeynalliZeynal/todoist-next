@@ -23,7 +23,7 @@ const Button = ({
   primary,
   onClick,
   disabled,
-  rounded = "lg",
+  rounded = "md",
   type = "button",
 }: Button) => {
   if (href)
