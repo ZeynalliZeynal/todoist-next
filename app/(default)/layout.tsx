@@ -3,7 +3,7 @@ import React from "react";
 import "@/app/globals.css";
 import Header from "@/app/_layout/header/Header";
 import type { Metadata } from "next";
-import { ModeSwitcher } from "@/app/_context/mode-switcher-context";
+import { ThemeSwitcher } from "@/app/_context/theme-switcher-context";
 
 const indieFlower = Indie_Flower({
   subsets: ["latin"],
@@ -32,14 +32,14 @@ export default function RootLayout({
         suppressHydrationWarning={true}
         className={`${indieFlower.className} ${inter.className}`}
       >
-        <ModeSwitcher>
+        <ThemeSwitcher>
           <Header />
           <div className="flex flex-col">
             <div className="flex-1 grid">
               <main className="w-full">{children}</main>
             </div>
           </div>
-        </ModeSwitcher>
+        </ThemeSwitcher>
       </body>
     </html>
   );

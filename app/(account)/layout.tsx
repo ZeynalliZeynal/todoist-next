@@ -7,7 +7,7 @@ import SidebarWrapper from "@/app/_components/account/sidebar/sidebar-wrapper";
 import Sidebar from "@/app/_components/account/sidebar/sidebar";
 import MainWrapper from "@/app/_components/account/layout/main/main-wrapper";
 import AccountHeader from "@/app/_components/account/layout/header/account-header";
-import { ModeSwitcher } from "@/app/_context/mode-switcher-context";
+import { ThemeSwitcher } from "@/app/_context/theme-switcher-context";
 
 const inter = Inter({ subsets: ["latin"], display: "swap" });
 
@@ -28,7 +28,7 @@ export default function Layout({
   return (
     <html lang="en">
       <body suppressHydrationWarning={true} className={inter.className}>
-        <ModeSwitcher>
+        <ThemeSwitcher>
           <SidebarProvider>
             <div className="w-screen h-screen">
               <div className="flex justify-end size-full relative">
@@ -42,7 +42,7 @@ export default function Layout({
               </div>
             </div>
           </SidebarProvider>
-        </ModeSwitcher>
+        </ThemeSwitcher>
       </body>
     </html>
   );

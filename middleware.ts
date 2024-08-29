@@ -1,43 +1,19 @@
-import {
-  adminPrefix,
-  apiAuthPrefix,
-  authRoutes,
-  DEFAULT_LOGIN_REDIRECT,
-  publicRoutes,
-} from "@/routes";
-import { auth } from "@/app/_lib/auth/auth";
+import { NextRequest, NextResponse } from "next/server";
+import { verifySession } from "@/app/_lib/auth/session";
+import { publicRoutes } from "@/routes";
 
-export default auth(async function middleware(req) {
-  const { nextUrl } = req;
-  const isLoggedIn = !!req.auth;
-  const isAuthRoutes = authRoutes.includes(nextUrl.pathname);
-  const isPublicRoutes = publicRoutes.includes(nextUrl.pathname);
+export default async function middleware(req: NextRequest) {
+  const isPublicRoute = publicRoutes.includes(req.nextUrl.pathname);
+  const protectedRoutes = "/account";
+  const isProtectedRoute = req.nextUrl.pathname.startsWith(protectedRoutes);
+  const session = await verifySession();
 
-  const isApiAuthRoutes = nextUrl.pathname.startsWith(apiAuthPrefix);
-
-  const isAdminRoute = nextUrl.pathname.startsWith(adminPrefix);
-  const isAdmin = req.auth?.user.role === "ADMIN";
-
-  if (isApiAuthRoutes) {
-    if (isLoggedIn)
-      return Response.redirect(new URL(DEFAULT_LOGIN_REDIRECT, nextUrl));
-    return undefined;
+  if (isProtectedRoute && !session?.userId) {
+    return NextResponse.redirect(new URL("/auth/login", req.nextUrl));
   }
 
-  if (isAuthRoutes) {
-    if (isLoggedIn)
-      return Response.redirect(new URL(DEFAULT_LOGIN_REDIRECT, nextUrl));
-    return undefined;
-  }
-  if (!isLoggedIn && !isPublicRoutes)
-    return Response.redirect(new URL("/auth/login", nextUrl));
-
-  if (isAdminRoute) {
-    if (!isAdmin) return new Response("Not found", { status: 404 });
-  }
-
-  return undefined;
-});
+  return NextResponse.next();
+}
 
 export const config = {
   matcher: ["/((?!.+\\.[\\w]+$|_next).*)", "/", "/(api|trpc)(.*)"],

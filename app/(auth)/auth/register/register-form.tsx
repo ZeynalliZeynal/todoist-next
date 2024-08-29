@@ -1,13 +1,13 @@
 "use client";
 
+import { useState, useTransition } from "react";
 import Button from "@/app/_components/button";
 import { useForm } from "react-hook-form";
-import { RegisterSchema } from "@/app/_schemas";
+import { RegisterSchema } from "@/app/_lib/auth/definitions";
 import { zodResolver } from "@hookform/resolvers/zod";
 import Message from "@/app/_components/form-components/message";
-import { useState, useTransition } from "react";
 import { z } from "zod";
-import { registerCredentials } from "@/app/_lib/auth/actions";
+import { signup } from "@/app/_lib/auth/actions";
 import Spinner from "@/app/_components/spinner";
 import { redirect } from "next/navigation";
 import { DEFAULT_LOGIN_REDIRECT } from "@/routes";
@@ -41,7 +41,7 @@ const RegisterForm = () => {
 
   const onSubmit = (formData: z.infer<typeof RegisterSchema>) => {
     startTransition(async () => {
-      const res = await registerCredentials(formData);
+      const res = await signup(formData);
       if (res?.error) {
         showMessage(res.error);
       } else redirect(DEFAULT_LOGIN_REDIRECT);

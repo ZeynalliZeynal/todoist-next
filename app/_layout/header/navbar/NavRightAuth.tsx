@@ -5,27 +5,23 @@ import {
   DropdownToggle,
 } from "@/app/_components/dropdown-menu/Dropdown";
 import UserDropdown from "@/app/_layout/header/navbar/UserDropdown";
-import { auth } from "@/app/_lib/auth/auth";
 import UserImage from "@/app/_components/user-image";
+import { getUser } from "@/app/_data/user";
 
 const NavRightAuth = async () => {
-  const session = await auth();
-  const isAdmin = session?.user.role === "ADMIN";
+  const user = await getUser();
+  const isAdmin = user?.role === "ADMIN";
 
-  if (session)
+  if (user)
     return (
       <Dropdown>
         <DropdownToggle name="user-dropdown">
           <button className="size-[30px] rounded-full hover:opacity-90 overflow-hidden">
-            <UserImage image={session.user.image} name={session.user.name} />
+            <UserImage image={user.image} name={user.name} />
           </button>
         </DropdownToggle>
         <DropdownMenu name="user-dropdown" sticky>
-          <UserDropdown
-            name={session.user?.name}
-            email={session.user?.email}
-            isAdmin={isAdmin}
-          />
+          <UserDropdown name={user.name} email={user.email} isAdmin={isAdmin} />
         </DropdownMenu>
       </Dropdown>
     );

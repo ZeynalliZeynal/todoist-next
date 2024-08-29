@@ -1,6 +1,6 @@
 import SidebarHead from "@/app/_components/account/sidebar/sidebar-head/sidebar-head";
 import SidebarNav from "@/app/_components/account/sidebar/sidebar-nav/sidebar-nav";
-import ModeSwitcher from "@/app/_components/mode-switcher";
+import ModeSwitcher from "@/app/_components/theme-switcher";
 
 export default async function Sidebar() {
   return (

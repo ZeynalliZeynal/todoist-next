@@ -8,7 +8,10 @@ export default function UserImage({
   name?: string | null;
 }) {
   return (
-    <span style={!image ? { background: generateRandomGradient() } : undefined}>
+    <span
+      className="size-full"
+      style={!image ? { background: generateRandomGradient() } : undefined}
+    >
       {image && <img src={image} alt={name || "user"} className="size-full" />}
     </span>
   );

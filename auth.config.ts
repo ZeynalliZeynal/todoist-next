@@ -2,11 +2,9 @@ import { NextAuthConfig } from "next-auth";
 import Google from "next-auth/providers/google";
 import GitHub from "next-auth/providers/github";
 import Credentials from "next-auth/providers/credentials";
-import { LoginSchema } from "@/app/_schemas";
+import { LoginSchema } from "@/app/_lib/auth/definitions";
 import { getUserByEmail } from "@/app/_lib/prisma/apiUsers";
 import bcrypt from "bcryptjs";
-
-// todo: fix type bug
 
 export default {
   providers: [

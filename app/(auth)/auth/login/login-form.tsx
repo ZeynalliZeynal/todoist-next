@@ -2,7 +2,7 @@
 
 import Button from "@/app/_components/button";
 import { useForm } from "react-hook-form";
-import { LoginSchema } from "@/app/_schemas";
+import { LoginSchema } from "@/app/_lib/auth/definitions";
 import { zodResolver } from "@hookform/resolvers/zod";
 import Message from "@/app/_components/form-components/message";
 import { logInCredentials } from "@/app/_lib/auth/actions";

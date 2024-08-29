@@ -11,3 +11,5 @@ export const apiAuthPrefix = "/api/auth";
 export const DEFAULT_LOGIN_REDIRECT = "/account/today";
 
 export const adminPrefix = "/admin";
+
+export const redirectUnauthorizedUser = "/auth/login";

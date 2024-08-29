@@ -1,11 +1,10 @@
 "use server";
 
-import { signIn, signOut } from "@/app/_lib/auth/auth";
 import { z } from "zod";
-import { LoginSchema, RegisterSchema } from "@/app/_schemas";
+import { LoginSchema, RegisterSchema } from "@/app/_lib/auth/definitions";
 import bcrypt from "bcryptjs";
-import { AuthError } from "next-auth";
 import prisma from "@/app/_lib/prisma/prisma";
+import { createSession, deleteSession } from "@/app/_lib/auth/session";
 
 export const logInCredentials = async (
   formData: z.infer<typeof LoginSchema>,
@@ -16,50 +15,41 @@ export const logInCredentials = async (
 
   const { password, email } = validatedFields.data;
 
-  try {
-    await signIn("credentials", {
+  const user = await prisma.user.findUnique({
+    where: {
       email,
-      password,
-      redirect: false,
-    });
-  } catch (error) {
-    if (error instanceof AuthError) {
-      switch (error.type) {
-        case "CredentialsSignin":
-          return {
-            error: "Couldn't find such a user",
-          };
-        default:
-          return { error: "Something went wrong" };
-      }
-    }
-    throw error;
-  }
-};
+    },
+  });
 
-export const registerCredentials = async (
-  formData: z.infer<typeof LoginSchema>,
-) => {
+  if (user && user?.id) {
+    const matchedPassword = await bcrypt.compare(password, user.password!!);
+    if (matchedPassword) await createSession(user.id);
+    else return { error: "Recheck your credentials." };
+  } else return { error: "Recheck your credentials." };
+};
+export const signup = async (formData: z.infer<typeof LoginSchema>) => {
   const validatedFields = RegisterSchema.safeParse(formData);
 
-  if (!validatedFields.success) return { error: "Invalid form values" };
+  if (!validatedFields.success)
+    return { errors: validatedFields.error.flatten().fieldErrors };
 
   const { email, password, name } = validatedFields.data;
-  const hashedPassword = await bcrypt.hash(password, 10);
-
-  // const hasRecord = await prisma.user.count();
 
   const existingUser = await prisma.user.findUnique({
     where: {
       email,
     },
   });
+  if (existingUser)
+    return {
+      error: "Email already exists, please use a different email or login.",
+    };
 
-  if (existingUser) return { error: "Email is already in use" };
+  const hashedPassword = await bcrypt.hash(password, 10);
 
   const role = process.env.ADMIN_EMAIL === email ? "ADMIN" : "USER";
 
-  await prisma.user.create({
+  const newUser = await prisma.user.create({
     data: {
       name,
       email,
@@ -67,8 +57,10 @@ export const registerCredentials = async (
       role,
     },
   });
+
+  await createSession(newUser.id);
 };
 
-export const logOut = async () => {
-  await signOut({ redirectTo: "/" });
+export const logout = async () => {
+  await deleteSession();
 };

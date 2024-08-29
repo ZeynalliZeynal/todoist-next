@@ -1,18 +1,18 @@
 "use client";
 
 import { LuLogOut } from "react-icons/lu";
-import { useFormStatus } from "react-dom";
 import Spinner from "@/app/_components/spinner";
+import { useLogout } from "@/app/_hooks/useLogout";
 
 export default function SidebarLogout() {
-  const { pending } = useFormStatus();
-
+  const { handleClick, isPending } = useLogout();
   return (
     <button
-      className='justify-start gap-3 px-2 hover:text-foreground h-10 rounded-lg hover:bg-gray-200 disabled:bg-background-100'
-      disabled={pending}
+      onClick={handleClick}
+      className="justify-items-start gap-3 px-2 hover:text-foreground h-10 rounded-lg hover:bg-gray-200 disabled:bg-background-100 grid grid-cols-[1rem_1fr]"
+      disabled={isPending}
     >
-      {pending ? <Spinner /> : <LuLogOut />}
+      {isPending ? <Spinner /> : <LuLogOut />}
       Log out
     </button>
   );
