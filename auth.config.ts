@@ -2,8 +2,8 @@ import { NextAuthConfig } from "next-auth";
 import Google from "next-auth/providers/google";
 import GitHub from "next-auth/providers/github";
 import Credentials from "next-auth/providers/credentials";
-import { LoginSchema } from "@/app/_lib/auth/definitions";
-import { getUserByEmail } from "@/app/_lib/prisma/apiUsers";
+import { LoginSchema } from "@/lib/auth/definitions";
+import { getUserByEmail } from "@/lib/prisma/apiUsers";
 import bcrypt from "bcryptjs";
 
 export default {

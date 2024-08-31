@@ -1,10 +1,10 @@
-import FormButton from "@/app/_components/form-button";
+import FormButton from "@/components/form-button";
 import { FcGoogle } from "react-icons/fc";
 import { IoLogoGithub } from "react-icons/io5";
 import Link from "next/link";
 import LoginForm from "@/app/(auth)/auth/login/login-form";
 import RegisterForm from "@/app/(auth)/auth/register/register-form";
-import { signIn } from "@/app/_lib/auth/auth";
+import { signIn } from "@/lib/auth/auth";
 import { DEFAULT_LOGIN_REDIRECT } from "@/routes";
 
 const AuthPage = ({ type }: { type: "login" | "register" }) => {

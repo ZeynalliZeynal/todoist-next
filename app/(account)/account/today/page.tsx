@@ -1,4 +1,4 @@
-import TodayCards from "@/app/_components/account/today/cards";
+import TodayCards from "@/components/account/today/cards";
 
 const Page = async () => {
   return (

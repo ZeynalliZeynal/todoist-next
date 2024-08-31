@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { verifySession } from "@/app/_lib/auth/session";
+import { verifySession } from "@/lib/auth/session";
 import { publicRoutes } from "@/routes";
 
 export default async function middleware(req: NextRequest) {

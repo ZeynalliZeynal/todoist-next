@@ -1,5 +1,5 @@
-import Container from "@/app/_components/container";
-import Button from "@/app/_components/button";
+import Container from "@/components/container";
+import Button from "@/components/button";
 import { IoLogoVercel } from "react-icons/io5";
 import Image from "next/image";
 

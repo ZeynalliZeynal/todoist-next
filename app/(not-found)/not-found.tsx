@@ -1,7 +1,7 @@
 "use client";
 
-import { LogoIcon } from "@/app/_components/icons/logo";
-import Button from "@/app/_components/button";
+import { LogoIcon } from "@/components/icons/logo";
+import Button from "@/components/button";
 import { useRouter } from "next/navigation";
 import { IoArrowBackOutline } from "react-icons/io5";
 

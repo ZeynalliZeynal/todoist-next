@@ -1,14 +1,14 @@
 "use client";
 
 import { useState, useTransition } from "react";
-import Button from "@/app/_components/button";
+import Button from "@/components/button";
 import { useForm } from "react-hook-form";
-import { RegisterSchema } from "@/app/_lib/auth/definitions";
+import { RegisterSchema } from "@/lib/auth/definitions";
 import { zodResolver } from "@hookform/resolvers/zod";
-import Message from "@/app/_components/form-components/message";
+import Message from "@/components/form-components/message";
 import { z } from "zod";
-import { signup } from "@/app/_lib/auth/actions";
-import Spinner from "@/app/_components/spinner";
+import { signup } from "@/lib/auth/actions";
+import Spinner from "@/components/spinner";
 import { redirect } from "next/navigation";
 import { DEFAULT_LOGIN_REDIRECT } from "@/routes";
 

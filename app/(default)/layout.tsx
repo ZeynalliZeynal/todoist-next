@@ -1,7 +1,7 @@
 import { Indie_Flower, Inter } from "next/font/google";
 import React from "react";
 import "@/app/globals.css";
-import Header from "@/app/_layout/header/Header";
+import Header from "@/components/home/layout/header/header";
 import type { Metadata } from "next";
 import { ThemeSwitcher } from "@/app/_context/theme-switcher-context";
 
