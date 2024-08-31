@@ -1,7 +1,7 @@
 import Button from "@/components/button";
 import { PiCalendarBlankThin } from "react-icons/pi";
-import { CiAt, CiFlag1 } from "react-icons/ci";
-import { IoAlarmOutline, IoPricetag } from "react-icons/io5";
+import { CiFlag1 } from "react-icons/ci";
+import { IoAlarmOutline } from "react-icons/io5";
 import Badge from "@/components/badge";
 import {
   DropdownMenu,
@@ -13,8 +13,13 @@ import {
 import { HiOutlineDotsHorizontal } from "react-icons/hi";
 import IconButton from "@/components/icon-button";
 import { Location } from "@/components/icons/geist-icons";
+import AddLabelButton from "@/components/add-dialog/add-label-button";
 
-export default function AddDialogButtons() {
+export default function AddDialogButtons({
+  addLabel,
+}: {
+  addLabel: () => void;
+}) {
   return (
     <DropdownMenu>
       <div className="flex gap-2">
@@ -42,15 +47,7 @@ export default function AddDialogButtons() {
         </DropdownMenuTrigger>
         <DropdownMenuContent className="min-w-52">
           <DropdownMenuGroup className="flex flex-col">
-            <DropdownMenuItem asChild>
-              <button className="grid grid-cols-[1.5rem_1fr] justify-items-start">
-                <IoPricetag />
-                <span className="inline-flex items-center w-full justify-between">
-                  Labels
-                  <CiAt />
-                </span>
-              </button>
-            </DropdownMenuItem>
+            <AddLabelButton handleClick={addLabel} />
             <DropdownMenuItem asChild>
               <button className="grid grid-cols-[1.5rem_1fr] justify-items-start">
                 <Location />

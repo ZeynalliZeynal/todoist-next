@@ -4,7 +4,7 @@ import CardsWrapper from "@/components/account/today/cards-wrapper";
 import Button from "@/components/button";
 import { Plus } from "@/components/icons/geist-icons";
 import TaskList from "@/components/account/today/task-list";
-import AddTaskDialog from "@/components/ui/add-dialog/add-task-dialog";
+import AddTaskDialog from "@/components/add-dialog/add-task-dialog";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 
 const TodayCards = async () => {
