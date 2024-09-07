@@ -15,7 +15,7 @@ const NavRightAuth = async () => {
   if (user)
     return (
       <DropdownMenu>
-        <DropdownMenuTrigger className="size-[30px] rounded-full hover:opacity-90 overflow-hidden">
+        <DropdownMenuTrigger className='size-[30px] rounded-full hover:opacity-90 overflow-hidden'>
           <UserImage image={user.image} name={user.name} />
         </DropdownMenuTrigger>
         <DropdownMenuContent>
@@ -24,11 +24,11 @@ const NavRightAuth = async () => {
       </DropdownMenu>
     );
   return (
-    <div className="flex items-center gap-2">
-      <Button size="sm" primary href="/auth/login">
+    <div className='flex items-center gap-2'>
+      <Button size='sm' primary href='/auth/login'>
         Login
       </Button>
-      <Button size="sm" href="/auth/register">
+      <Button size='sm' href='/auth/register'>
         Start for free
       </Button>
     </div>

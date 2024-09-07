@@ -7,7 +7,7 @@ export default async function middleware(req: NextRequest) {
   const protectedRoutes = "/account";
   const isProtectedRoute = req.nextUrl.pathname.startsWith(protectedRoutes);
   const isAuthRoute = authRoutes.includes(req.nextUrl.pathname);
-  console.log(isAuthRoute);
+  // console.log(isAuthRoute);
   const session = await verifySession();
 
   if (isProtectedRoute && !session?.userId) {

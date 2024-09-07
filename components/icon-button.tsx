@@ -1,5 +1,5 @@
+import { cn } from "@/lib/utils";
 import { ReactElement } from "react";
-import { clsx } from "clsx";
 
 export default function IconButton({
   children,
@@ -15,9 +15,9 @@ export default function IconButton({
   return (
     <button
       type={type}
-      className={clsx(
+      className={cn(
         "hover:bg-gray-200 text-gray-900 hover:text-foreground rounded-md size-8 border",
-        className,
+        className
       )}
       onClick={onClick}
     >
@@ -25,3 +25,6 @@ export default function IconButton({
     </button>
   );
 }
+
+IconButton.variant =
+  "hover:bg-gray-200 text-gray-900 hover:text-foreground rounded-md size-8 border";
