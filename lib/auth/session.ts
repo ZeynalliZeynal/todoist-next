@@ -3,7 +3,7 @@ import "server-only";
 import { JWTPayload, jwtVerify, SignJWT } from "jose";
 import { cookies } from "next/headers";
 
-const key: Uint8Array = new TextEncoder().encode(process.env.SECRET);
+const key: Uint8Array = new TextEncoder().encode(process.env.KEY);
 
 export const encrypt = async (payload: JWTPayload | undefined) =>
   new SignJWT(payload)
