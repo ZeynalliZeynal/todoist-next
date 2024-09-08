@@ -1,16 +1,11 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
-import {
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
-} from "@/components/ui/dialog";
-import AddDialogButtons from "@/components/add-dialog/add-dialog-buttons";
+import { ReactNode, useState } from "react";
+import { DialogFooter, DialogHeader } from "@/components/ui/dialog";
 import { addTask } from "@/lib/actions/taskActions";
 import AddDialogBottom from "@/components/add-dialog/add-dialog-bottom";
 
-export default function AddTaskDialog() {
+export default function AddTaskDialog({ children }: { children: ReactNode }) {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
 
@@ -52,7 +47,7 @@ export default function AddTaskDialog() {
               onChange={({ target }) => setDescription(target.value)}
             />
           </div>
-          <AddDialogButtons />
+          {children}
         </div>
       </DialogHeader>
       <DialogFooter className='px-6 py-4 bg-background-200'>

@@ -49,13 +49,14 @@ model User {
   role          UserRole  @default(USER)
   accounts      Account[]
   Task          Task[]
+  Label         Label[]
 
   @@map("users")
 }
 
 model Task {
   id          String   @id @default(cuid())
-  createdAt   DateTime @default(now())
+  createdAt   DateTime @default(now()) @map("created_at")
   name        String
   description String?
   isCompleted Boolean  @default(false) @map("is_completed")
@@ -63,6 +64,16 @@ model Task {
   user        User     @relation(fields: [userId], references: [id])
 
   @@map("tasks")
+}
+
+model Label {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now()) @map("created_at")
+  name      String   @unique
+  userId    String   @map("user_id")
+  user      User     @relation(fields: [userId], references: [id])
+
+  @@map("labels")
 }
 
 model VerificationToken {

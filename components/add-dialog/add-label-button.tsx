@@ -2,11 +2,14 @@
 
 import { IoPricetag } from "react-icons/io5";
 import { CiAt } from "react-icons/ci";
-import { DropdownMenuItem } from "@/components/ui/dropdown-menu";
+import { DropdownMenuSubTrigger } from "@radix-ui/react-dropdown-menu";
 
 const AddLabelButton = ({ handleClick }: { handleClick?: () => void }) => {
   return (
-    <DropdownMenuItem asChild>
+    <DropdownMenuSubTrigger
+      asChild
+      className='px-2 py-1.5 focus:bg-gray-alpha-200 focus:text-foreground outline-none rounded-sm'
+    >
       <button
         className='grid grid-cols-[1.5rem_1fr] justify-items-start'
         onClick={handleClick}
@@ -17,7 +20,7 @@ const AddLabelButton = ({ handleClick }: { handleClick?: () => void }) => {
           <CiAt />
         </span>
       </button>
-    </DropdownMenuItem>
+    </DropdownMenuSubTrigger>
   );
 };
 

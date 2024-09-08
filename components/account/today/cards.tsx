@@ -1,4 +1,3 @@
-import { verifySession } from "@/lib/auth/session";
 import prisma from "@/lib/prisma/prisma";
 import CardsWrapper from "@/components/account/today/cards-wrapper";
 import Button from "@/components/button";
@@ -6,12 +5,14 @@ import { Plus } from "@/components/icons/geist-icons";
 import TaskList from "@/components/account/today/task-list";
 import AddTaskDialog from "@/components/add-dialog/add-task-dialog";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
+import { getUser } from "@/data/user";
+import AddDialogButtons from "@/components/add-dialog/add-dialog-buttons";
 
 const TodayCards = async () => {
-  const session = await verifySession();
+  const user = await getUser();
   const tasks = await prisma.task.findMany({
     where: {
-      userId: session?.userId,
+      userId: user?.id,
       isCompleted: false,
     },
   });
@@ -28,7 +29,9 @@ const TodayCards = async () => {
             </DialogTrigger>
           </div>
           <DialogContent>
-            <AddTaskDialog />
+            <AddTaskDialog>
+              <AddDialogButtons />
+            </AddTaskDialog>
           </DialogContent>
         </Dialog>
       </CardsWrapper>

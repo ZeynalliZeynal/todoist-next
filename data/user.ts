@@ -1,3 +1,5 @@
+"use server";
+
 import { verifySession } from "@/lib/auth/session";
 import prisma from "@/lib/prisma/prisma";
 
