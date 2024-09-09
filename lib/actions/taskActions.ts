@@ -4,7 +4,7 @@ import prisma from "@/lib/prisma/prisma";
 import { revalidatePath } from "next/cache";
 import { verifySession } from "@/lib/auth/session";
 
-export const addTask = async (formData: FormData) => {
+export const addTask = async (formData: FormData, tags: string[]) => {
   const name = formData.get("name")?.toString();
   const description = formData.get("description")?.toString();
   if (!name) return { error: "Please enter a name" };
@@ -12,11 +12,13 @@ export const addTask = async (formData: FormData) => {
   const session = await verifySession();
   if (!session) return { error: "You are not logged in" };
 
+  console.log(tags);
   await prisma.task.create({
     data: {
       userId: session.userId,
       name,
       description,
+      tags,
     },
   });
 

@@ -21,7 +21,7 @@ const TodayCards = async () => {
       <CardsWrapper>
         <TaskList tasks={tasks} />
         <Dialog>
-          <div className='sticky bottom-0 bg-background-100 px-4 py-3 border-t flex-none'>
+          <div className='sticky bottom-0 bg-background-100 py-3 border-t flex-none'>
             <DialogTrigger asChild>
               <Button icon={<Plus size={14} />} size='sm'>
                 Add task

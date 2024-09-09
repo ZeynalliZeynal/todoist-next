@@ -4,7 +4,7 @@ import { IoPricetag } from "react-icons/io5";
 import { CiAt } from "react-icons/ci";
 import { DropdownMenuSubTrigger } from "@radix-ui/react-dropdown-menu";
 
-const AddLabelButton = ({ handleClick }: { handleClick?: () => void }) => {
+const AddTagButton = ({ handleClick }: { handleClick?: () => void }) => {
   return (
     <DropdownMenuSubTrigger
       asChild
@@ -24,4 +24,4 @@ const AddLabelButton = ({ handleClick }: { handleClick?: () => void }) => {
   );
 };
 
-export default AddLabelButton;
+export default AddTagButton;

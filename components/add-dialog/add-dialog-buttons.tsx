@@ -7,18 +7,15 @@ import AddMoreDropdowns from "./dropdowns/add-more-dropdown";
 
 const AddDialogButtons = () => {
   return (
-    <div className='flex gap-2'>
-      <Button size='sm' icon={<PiCalendarBlankThin />} primary>
+    <div className="flex gap-2">
+      <Button size="sm" icon={<PiCalendarBlankThin />} primary>
         Due date
       </Button>
-      <Button size='sm' icon={<CiFlag1 />} primary>
+      <Button size="sm" icon={<CiFlag1 />} primary>
         Priority
       </Button>
-      <Button size='sm' icon={<IoAlarmOutline />} primary>
-        Reminders{" "}
-        <Badge color='amber-900' bg='amber-200'>
-          UPGRADE
-        </Badge>
+      <Button size="sm" icon={<IoAlarmOutline />} primary>
+        Reminders <Badge style="amber-subtle">UPGRADE</Badge>
       </Button>
       <AddMoreDropdowns />
     </div>

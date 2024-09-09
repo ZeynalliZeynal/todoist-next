@@ -1,7 +1,7 @@
 "use client";
 
 import { BsLayoutSidebar } from "react-icons/bs";
-import { useSideBar } from "@/app/_context/sidebar-context";
+import { useSideBar } from "@/context/sidebar-context";
 import IconButton from "@/components/icon-button";
 import { clsx } from "clsx";
 import Link from "next/link";
@@ -13,18 +13,18 @@ export default function SidebarHeadRight() {
   const pathname = usePathname();
 
   return (
-    <div className="flex justify-end items-center gap-2">
+    <div className='flex justify-end items-center gap-2'>
       <Link
-        href="/account/notifications"
+        href='/account/notifications'
         className={clsx(
           "size-9 rounded-lg hover:bg-[var(--hover-bg)] hover:text-foreground",
           {
             "bg-gray-100 text-foreground":
               pathname === "/account/notifications",
-          },
+          }
         )}
       >
-        <IoNotificationsOutline className="size-5" />
+        <IoNotificationsOutline className='size-5' />
       </Link>
       <IconButton
         onClick={() => setActive(false)}

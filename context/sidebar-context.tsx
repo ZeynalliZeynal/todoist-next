@@ -48,7 +48,6 @@ export default function SidebarProvider({ children }: { children: ReactNode }) {
     }
   }, [active]);
 
-  const calculateWidth = () => {};
   return (
     <SidebarContext.Provider
       value={{

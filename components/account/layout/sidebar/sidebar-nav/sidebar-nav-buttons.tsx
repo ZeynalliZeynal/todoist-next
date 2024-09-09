@@ -1,5 +1,3 @@
-"use client";
-
 import { GoPlus } from "react-icons/go";
 import { IoSearchOutline } from "react-icons/io5";
 import AddTaskDialog from "@/components/add-dialog/add-task-dialog";
