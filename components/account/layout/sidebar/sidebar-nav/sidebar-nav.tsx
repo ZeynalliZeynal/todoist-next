@@ -27,9 +27,9 @@ export default function SidebarNav() {
           <PiCalendarDotsLight className="size-5" />
           Upcoming
         </SidebarNavLink>
-        <SidebarNavLink href="/account/filters-labels">
+        <SidebarNavLink href="/account/filters-tags">
           <CiGrid41 className="size-5" />
-          Filters & Labels
+          Filters & tags
         </SidebarNavLink>
       </ul>
     </nav>
