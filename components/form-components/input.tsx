@@ -10,7 +10,7 @@ interface Input<T extends Record<string, unknown>> {
   errors?: FieldErrors;
   disabled?: boolean;
   register: UseFormRegister<T>;
-  size: "sm" | "md" | "lg";
+  size?: "sm" | "md" | "lg";
 }
 
 const Input = <T extends Record<string, unknown>>({
