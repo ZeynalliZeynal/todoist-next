@@ -22,7 +22,7 @@ export default function SidebarNavLink({
           "rounded-[var(--rounded)] hover:text-foreground px-2 h-10 hover:bg-[var(--hover-bg)] w-full justify-start gap-1.5",
           {
             "bg-gray-100 text-foreground": pathname === href,
-          },
+          }
         )}
       >
         {children}
