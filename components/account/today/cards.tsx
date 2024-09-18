@@ -10,31 +10,51 @@ import AddDialogButtons from "@/components/add-dialog/add-dialog-buttons";
 
 const TodayCards = async () => {
   const user = await getUser();
-  const tasks = await prisma.task.findMany({
-    where: {
-      userId: user?.id,
-      isCompleted: false,
-    },
-  });
+  const [tasks_today, tasks_overdue] = await Promise.all([
+    await prisma.task.findMany({
+      where: {
+        userId: user?.id,
+        isCompleted: false,
+        createdAt: {
+          gte: new Date(new Date().getTime() - 24 * 60 * 60 * 1000),
+        },
+      },
+    }),
+    await prisma.task.findMany({
+      where: {
+        userId: user?.id,
+        isCompleted: false,
+        createdAt: {
+          lte: new Date(new Date().getTime() - 24 * 60 * 60 * 1000),
+        },
+      },
+    }),
+  ]);
+
   return (
-    <section className='py-6 w-[280px]'>
-      <CardsWrapper>
-        <TaskList tasks={tasks} />
-        <Dialog>
-          <div className='sticky bottom-0 bg-background-100 py-3 border-t flex-none'>
-            <DialogTrigger asChild>
-              <Button icon={<Plus size={14} />} size='sm'>
-                Add task
-              </Button>
-            </DialogTrigger>
-          </div>
-          <DialogContent>
-            <AddTaskDialog>
-              <AddDialogButtons />
-            </AddTaskDialog>
-          </DialogContent>
-        </Dialog>
-      </CardsWrapper>
+    <section className='py-6'>
+      <div className='flex gap-6'>
+        <CardsWrapper>
+          <TaskList overdue tasks={tasks_overdue} />
+        </CardsWrapper>
+        <CardsWrapper>
+          <TaskList tasks={tasks_today} />
+          <Dialog>
+            <div className='sticky bottom-0 bg-background-100 py-3 border-t flex-none'>
+              <DialogTrigger asChild>
+                <Button icon={<Plus size={14} />} size='sm'>
+                  Add task
+                </Button>
+              </DialogTrigger>
+            </div>
+            <DialogContent>
+              <AddTaskDialog>
+                <AddDialogButtons />
+              </AddTaskDialog>
+            </DialogContent>
+          </Dialog>
+        </CardsWrapper>
+      </div>
     </section>
   );
 };

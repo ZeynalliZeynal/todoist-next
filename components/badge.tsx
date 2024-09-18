@@ -33,7 +33,7 @@ export default function Badge({
   return (
     <span
       className={cn(
-        "rounded-full inline-flex items-center justify-center gap-1.5 select-none",
+        "rounded-full inline-flex items-center w-max justify-center gap-1.5 select-none",
         {
           "h-5 px-1.5 text-[10px]": size === "sm",
           "h-6 px-2.5 text-xs": size === "md",

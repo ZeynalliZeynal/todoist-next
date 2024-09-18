@@ -9,7 +9,7 @@ export default function SidebarWrapper({ children }: { children: ReactNode }) {
   return (
     <aside
       ref={sidebarRef}
-      className='min-w-[300px] absolute top-0 transition-all duration-500 bg-background-100 border-r h-screen rounded-[var(--rounded)] text-gray-900 overflow-hidden [--hover-bg:var(--ds-gray-alpha-200)] [--rounded:6px]'
+      className='min-w-[300px] absolute top-0 transition-all duration-500 bg-background-100 border-r h-screen rounded-[var(--rounded)] text-gray-900 overflow-hidden [--hover-bg:hsla(var(--ds-gray-alpha-200))] [--rounded:6px]'
       style={{
         left: active
           ? 0

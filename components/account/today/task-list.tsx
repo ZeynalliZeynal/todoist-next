@@ -1,10 +1,13 @@
 "use client";
 
+import { format, formatDistance, formatRelative, subDays } from "date-fns";
 import CheckTask from "@/components/check-task";
 import { useOptimistic } from "react";
 import { completeTask } from "@/lib/actions/taskActions";
+import Message from "@/components/form-components/message";
+import Badge from "@/components/badge";
 
-const TaskList = ({ tasks }: { tasks: Task[] }) => {
+const TaskList = ({ overdue, tasks }: { overdue?: true; tasks: Task[] }) => {
   const [optimisticTasks, optimisticComplete] = useOptimistic(
     tasks,
     (state, taskId) => state.filter((task) => task.id !== taskId)
@@ -20,11 +23,17 @@ const TaskList = ({ tasks }: { tasks: Task[] }) => {
     <>
       <div className='flex flex-none px-4 py-3 border-b'>
         <h3 className='text-foreground text-sm font-semibold'>
-          {new Intl.DateTimeFormat("en-US", {
-            month: "short",
-            day: "2-digit",
-          }).format(new Date())}{" "}
-          &middot; Today{" "}
+          {overdue ? (
+            "Overdue"
+          ) : (
+            <>
+              {new Intl.DateTimeFormat("en-US", {
+                month: "short",
+                day: "2-digit",
+              }).format(new Date())}{" "}
+              &middot; Today
+            </>
+          )}
           <span className='ml-2 text-xs text-gray-900'>
             {optimisticTasks.length}
           </span>
@@ -44,6 +53,18 @@ const TaskList = ({ tasks }: { tasks: Task[] }) => {
                   <div className='text-xs text-gray-800'>
                     {task.description}
                   </div>
+                )}
+                {overdue && (
+                  <Badge style='teal-subtle'>
+                    {formatRelative(
+                      subDays(
+                        new Date(),
+                        new Date().getDate() -
+                          new Date(task.createdAt as Date).getDate()
+                      ),
+                      new Date()
+                    )}
+                  </Badge>
                 )}
               </div>
             </div>

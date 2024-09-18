@@ -19,7 +19,11 @@ const CardsWrapper = ({ children }: { children: ReactNode }) => {
     return () => window.removeEventListener("resize", updateHeight);
   }, []);
   return (
-    <div className="flex flex-col" style={{ maxHeight: height }} ref={ref}>
+    <div
+      className='flex flex-col w-[280px]'
+      style={{ maxHeight: height }}
+      ref={ref}
+    >
       {children}
     </div>
   );
