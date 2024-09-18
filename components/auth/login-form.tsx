@@ -11,6 +11,7 @@ import { z } from "zod";
 import Spinner from "@/components/spinner";
 import { redirect, useSearchParams } from "next/navigation";
 import { DEFAULT_LOGIN_REDIRECT } from "@/routes";
+import Input from "../form-components/input";
 
 const LoginForm = () => {
   const [responseStatus, setResponseStatus] = useState<{
@@ -57,48 +58,34 @@ const LoginForm = () => {
     });
   };
   return (
-    <form noValidate onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-      <div className="flex flex-col gap-2">
-        <div className="flex rounded-lg border overflow-hidden text-foreground h-12 font-semibold focus-within:shadow-input transition">
-          <input
-            type="email"
-            placeholder="Email Address"
-            className="px-3 transition-all placeholder-gray-600 size-full"
-            {...register("email")}
-          />
-        </div>
-        {errors.email && (
-          <Message type="error" outlined>
-            {errors.email?.message}
-          </Message>
-        )}
-      </div>
-      <div className="flex flex-col gap-2">
-        <div className="flex rounded-lg border overflow-hidden text-foreground h-12 font-semibold focus-within:shadow-input transition">
-          <input
-            type="password"
-            placeholder="Password"
-            className="px-3 transition-all placeholder-gray-600 size-full"
-            {...register("password")}
-          />{" "}
-        </div>
-        {errors.password && (
-          <Message type="error" outlined>
-            {errors.password?.message}
-          </Message>
-        )}
-      </div>
+    <form noValidate onSubmit={handleSubmit(onSubmit)} className='space-y-4'>
+      <Input
+        placeholder='Email address'
+        register={register}
+        type='email'
+        value='email'
+        errors={errors}
+        disabled={isPending}
+      />
+      <Input
+        placeholder='Password'
+        register={register}
+        type='password'
+        value='password'
+        errors={errors}
+        disabled={isPending}
+      />
       {responseStatus.error && (
-        <Message type="error" outlined>
+        <Message type='error' outlined>
           {responseStatus.error}
         </Message>
       )}{" "}
       {responseStatus.success && (
-        <Message type="success">{responseStatus.success}</Message>
+        <Message type='success'>{responseStatus.success}</Message>
       )}{" "}
       <Button
-        type="submit"
-        size="lg"
+        type='submit'
+        size='lg'
         full
         disabled={isPending}
         icon={isPending ? <Spinner /> : undefined}

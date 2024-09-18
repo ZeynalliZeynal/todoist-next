@@ -1,40 +1,54 @@
-import { HTMLInputTypeAttribute } from "react";
+import { HTMLInputTypeAttribute, ReactNode } from "react";
+import { FieldErrors, Path, UseFormRegister } from "react-hook-form";
+import Message from "./message";
+import { cn } from "@/lib/utils";
 
-interface Input {
-  type: HTMLInputTypeAttribute;
-  name?: string;
+interface Input<T extends Record<string, unknown>> {
+  type?: HTMLInputTypeAttribute;
   placeholder: string;
-  value?: string | number | readonly string[];
-  onChange?: () => void;
-  required?: boolean;
+  value: Path<T>;
+  errors?: FieldErrors;
   disabled?: boolean;
+  register: UseFormRegister<T>;
+  size: "sm" | "md" | "lg";
 }
 
-const InputLarge = ({
-  name,
-  type,
+const Input = <T extends Record<string, unknown>>({
+  type = "text",
   placeholder,
+  errors,
   value,
-  onChange,
-  required,
   disabled,
-  ...props
-}: Input) => {
+  register,
+  size = "md",
+}: Input<T>) => {
   return (
-    <div className="flex rounded-lg border overflow-hidden text-foreground h-12 font-semibold focus-within:shadow-input transition">
-      <input
-        type={type}
-        name={name}
-        placeholder={placeholder}
-        value={value}
-        onChange={onChange}
-        required={required}
-        disabled={disabled}
-        className="px-3 transition-all placeholder-gray-600 size-full"
-        {...props}
-      />
+    <div className='flex flex-col gap-2'>
+      <div
+        className={cn(
+          "flex rounded-lg border overflow-hidden text-foreground font-semibold focus-within:shadow-input transition",
+          {
+            "h-8": size === "sm",
+            "h-10": size === "md",
+            "h-12": size === "lg",
+          }
+        )}
+      >
+        <input
+          type={type}
+          placeholder={placeholder}
+          disabled={disabled}
+          className='px-3 transition-all placeholder-gray-600 size-full'
+          {...register(value)}
+        />
+        {errors && errors[value]?.message && (
+          <Message type='error' outlined>
+            {errors[value].message as string}
+          </Message>
+        )}
+      </div>
     </div>
   );
 };
 
-export default InputLarge;
+export default Input;

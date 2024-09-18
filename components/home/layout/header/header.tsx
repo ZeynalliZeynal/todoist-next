@@ -1,16 +1,14 @@
 import Container from "@/components/container";
 import Logo from "@/components/icons/logo";
-import NavList from "@/components/home/layout/header/navbar/NavList";
+import NavList from "@/components/home/layout/header/navbar/nav-list";
 import Link from "next/link";
 
 const Header = () => {
   return (
-    <header
-      className={`h-16 z-50 text-sm mb-16 sticky top-0 shadow-header-border backdrop-blur-lg bg-header-white/75 dark:bg-header-black/75`}
-    >
+    <header className='h-16 z-50 text-sm mb-16 sticky top-0 shadow-header-border backdrop-blur-lg bg-background-100/50'>
       <Container>
-        <div className="flex justify-between w-full">
-          <Link href="/public">
+        <div className='flex justify-between w-full'>
+          <Link href='/public'>
             <Logo />
           </Link>
           <NavList />

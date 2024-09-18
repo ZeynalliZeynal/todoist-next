@@ -5,7 +5,7 @@ import {
   DropdownMenuContent,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import UserDropdown from "@/components/home/layout/header/navbar/UserDropdown";
+import UserDropdown from "@/components/home/layout/header/navbar/user-dropdown";
 import UserImage from "@/components/user-image";
 
 const NavRightAuth = async () => {
@@ -18,7 +18,7 @@ const NavRightAuth = async () => {
         <DropdownMenuTrigger className='size-[30px] rounded-full hover:opacity-90 overflow-hidden'>
           <UserImage image={user.image} name={user.name} />
         </DropdownMenuTrigger>
-        <DropdownMenuContent>
+        <DropdownMenuContent className='min-w-64' align='end'>
           <UserDropdown isAdmin={isAdmin} name={user.name} email={user.email} />
         </DropdownMenuContent>
       </DropdownMenu>

@@ -3,8 +3,9 @@
 import prisma from "@/lib/prisma/prisma";
 import { revalidatePath } from "next/cache";
 import { verifySession } from "@/lib/auth/session";
+import { FieldValues } from "react-hook-form";
 
-export const addTask = async (formData: FormData, tags: string[]) => {
+export const addTask = async (formData: FieldValues, tags: string[]) => {
   const name = formData.get("name")?.toString();
   const description = formData.get("description")?.toString();
   if (!name) return { error: "Please enter a name" };
