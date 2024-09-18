@@ -66,6 +66,7 @@ const LoginForm = () => {
         value='email'
         errors={errors}
         disabled={isPending}
+        size='lg'
       />
       <Input
         placeholder='Password'
@@ -74,6 +75,7 @@ const LoginForm = () => {
         value='password'
         errors={errors}
         disabled={isPending}
+        size='lg'
       />
       {responseStatus.error && (
         <Message type='error' outlined>

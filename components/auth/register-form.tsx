@@ -58,6 +58,7 @@ const RegisterForm = () => {
         value='name'
         errors={errors}
         disabled={isPending}
+        size='lg'
       />
       <Input
         placeholder='Email address'
@@ -66,6 +67,7 @@ const RegisterForm = () => {
         value='email'
         errors={errors}
         disabled={isPending}
+        size='lg'
       />
       <Input
         placeholder='Password'
@@ -74,6 +76,7 @@ const RegisterForm = () => {
         value='password'
         errors={errors}
         disabled={isPending}
+        size='lg'
       />
       {responseStatus.error && (
         <Message type='error' outlined>

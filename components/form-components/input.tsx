@@ -41,12 +41,12 @@ const Input = <T extends Record<string, unknown>>({
           className='px-3 transition-all placeholder-gray-600 size-full'
           {...register(value)}
         />
-        {errors && errors[value]?.message && (
-          <Message type='error' outlined>
-            {errors[value].message as string}
-          </Message>
-        )}
       </div>
+      {errors && errors[value]?.message && (
+        <Message type='error' outlined>
+          {errors[value].message as string}
+        </Message>
+      )}
     </div>
   );
 };
