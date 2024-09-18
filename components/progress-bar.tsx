@@ -18,21 +18,21 @@ export default function ProgressBar({
         cx={size / 2}
         cy={size / 2}
         r={radius}
-        fill="none"
-        strokeWidth="3px"
-        stroke="var(--ds-gray-alpha-400)"
+        fill='none'
+        strokeWidth='3px'
+        stroke='hsla(var(--ds-gray-alpha-400))'
       />
       <circle
         cx={size / 2}
         cy={size / 2}
         r={radius}
-        strokeWidth="3px"
+        strokeWidth='3px'
         strokeDasharray={dashArray}
         strokeDashoffset={dashOffset}
-        stroke={`var(--ds-${color})`}
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        fill="none"
+        stroke={`hsla(var(--ds-${color}))`}
+        strokeLinecap='round'
+        strokeLinejoin='round'
+        fill='none'
         transform={`rotate(-90 ${size / 2} ${size / 2})`}
       />
     </svg>

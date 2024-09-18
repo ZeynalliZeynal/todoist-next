@@ -34,9 +34,11 @@ const TodayCards = async () => {
   return (
     <section className='py-6'>
       <div className='flex gap-6'>
-        <CardsWrapper>
-          <TaskList overdue tasks={tasks_overdue} />
-        </CardsWrapper>
+        {!!tasks_overdue.length && (
+          <CardsWrapper>
+            <TaskList overdue tasks={tasks_overdue} />
+          </CardsWrapper>
+        )}
         <CardsWrapper>
           <TaskList tasks={tasks_today} />
           <Dialog>

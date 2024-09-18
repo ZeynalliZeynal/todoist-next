@@ -15,7 +15,7 @@ export default function ThemeSwitcher({ size = 32 }: { size?: number }) {
       }}
     >
       <button
-        className={cn("rounded-full hover:text-foreground", {
+        className={cn("rounded-full hover:text-foreground transition-none", {
           "text-foreground border": theme === "device",
         })}
         style={{
@@ -29,7 +29,7 @@ export default function ThemeSwitcher({ size = 32 }: { size?: number }) {
         <DeviceAlternate size={size / 2} />
       </button>
       <button
-        className={cn("rounded-full hover:text-foreground", {
+        className={cn("rounded-full hover:text-foreground transition-none", {
           "text-foreground border": theme === "light",
         })}
         style={{
@@ -43,7 +43,7 @@ export default function ThemeSwitcher({ size = 32 }: { size?: number }) {
         <Sun size={size / 2} />
       </button>
       <button
-        className={cn("rounded-full hover:text-foreground", {
+        className={cn("rounded-full hover:text-foreground transition-none", {
           "text-foreground border": theme === "dark",
         })}
         style={{
