@@ -1,8 +1,8 @@
-import Button from "@/components/button";
+import Button from "@/components/ui/button";
 import { PiCalendarBlankThin } from "react-icons/pi";
 import { CiFlag1 } from "react-icons/ci";
 import { IoAlarmOutline } from "react-icons/io5";
-import Badge from "@/components/badge";
+import Badge from "@/components/ui/badge";
 import AddMoreDropdowns from "./dropdowns/add-more-dropdown";
 
 const AddDialogButtons = () => {

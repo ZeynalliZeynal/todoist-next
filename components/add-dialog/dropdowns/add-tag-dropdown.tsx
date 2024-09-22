@@ -39,26 +39,26 @@ const AddTagDropdown = ({ tags }: { tags: string[] }) => {
     <DropdownMenuSub>
       <AddLabelButton />
       <DropdownMenuPortal>
-        <DropdownMenuSubContent className="z-50 rounded-md border bg-background-100 p-1 text-gray-900 shadow-md">
+        <DropdownMenuSubContent className='z-50 rounded-md border bg-background-100 p-1 text-gray-900 shadow-md'>
           <DropdownMenuGroup>
-            <div className="px-2 py-1.5 rounded-md text-sm flex items-center gap-2">
+            <div className='px-2 py-1.5 -md text-sm flex items-center gap-2'>
               <Search size={16} />
               <input
-                type="text"
-                placeholder="Search tag..."
-                className="placeholder:text-gray-900 placeholder:font-normal"
+                type='text'
+                placeholder='Search tag...'
+                className='placeholder:text-gray-900 placeholder:font-normal'
                 onChange={({ target }) => setTagInput(target.value)}
               />
             </div>
           </DropdownMenuGroup>
           <DropdownMenuSeparator />
-          <DropdownMenuGroup className="overflow-y-auto overflow-x-hidden max-h-40 scroll-pt-10">
+          <DropdownMenuGroup className='overflow-y-auto overflow-x-hidden max-h-40 scroll-pt-10'>
             {!tagInput && !filteredTags.length ? (
               <DropdownMenuItem disabled>Type to create a tag</DropdownMenuItem>
             ) : !filteredTags.length ? (
               <DropdownMenuItem asChild>
                 <button
-                  className="w-full"
+                  className='w-full'
                   onClick={() => {
                     startTransition(async () => await addTag(tagInput));
                     addTaskTag(tagInput);
@@ -72,8 +72,8 @@ const AddTagDropdown = ({ tags }: { tags: string[] }) => {
             ) : (
               filteredTags.map((tag) => (
                 <DropdownMenuItem asChild key={tag}>
-                  <button className="w-full" onClick={() => handleAddTag(tag)}>
-                    <span className="inline-flex items-center gap-2">
+                  <button className='w-full' onClick={() => handleAddTag(tag)}>
+                    <span className='inline-flex items-center gap-2'>
                       <Tag size={14} /> {tag}
                     </span>
                     {taskTags.has(tag) && <Check size={14} />}

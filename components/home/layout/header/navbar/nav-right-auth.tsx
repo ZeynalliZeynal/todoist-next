@@ -1,4 +1,4 @@
-import Button from "@/components/button";
+import Button from "@/components/ui/button";
 import { getUser } from "@/data/user";
 import {
   DropdownMenu,

@@ -1,7 +1,7 @@
 import { GoInbox } from "react-icons/go";
-import Button from "@/components/button";
+import Button from "@/components/ui/button";
 import { IoCaretDownOutline } from "react-icons/io5";
-import Spinner from "@/components/spinner";
+import Spinner from "@/components/ui/spinner";
 import { DialogClose } from "@/components/ui/dialog";
 
 export default function AddDialogBottom({

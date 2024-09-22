@@ -1,14 +1,21 @@
 "use client";
 
 import { formatRelative, subDays } from "date-fns";
-import CheckTask from "@/components/check-task";
+import CheckTask from "@/components/ui/check-task";
 import { useOptimistic } from "react";
 import { completeTask } from "@/lib/actions/taskActions";
-import Badge from "@/components/badge";
+import Badge from "@/components/ui/badge";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
+import { Task as TaskProps } from "@prisma/client";
 import Task from "./task";
 
-const TaskList = ({ overdue, tasks }: { overdue?: true; tasks: Task[] }) => {
+const TaskList = ({
+  overdue,
+  tasks,
+}: {
+  overdue?: true;
+  tasks: TaskProps[];
+}) => {
   const [optimisticTasks, optimisticComplete] = useOptimistic(
     tasks,
     (state, taskId) => state.filter((task) => task.id !== taskId)
@@ -70,7 +77,7 @@ const TaskList = ({ overdue, tasks }: { overdue?: true; tasks: Task[] }) => {
                   </div>
                 </DialogTrigger>
                 <DialogContent>
-                  <Task />
+                  <Task task={task} />
                 </DialogContent>
               </Dialog>
             ))}

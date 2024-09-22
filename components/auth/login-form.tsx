@@ -1,6 +1,6 @@
 "use client";
 
-import Button from "@/components/button";
+import Button from "@/components/ui/button";
 import { useForm } from "react-hook-form";
 import { LoginSchema } from "@/lib/auth/definitions";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -8,7 +8,7 @@ import Message from "@/components/form-components/message";
 import { logInCredentials } from "@/lib/auth/actions";
 import { useEffect, useState, useTransition } from "react";
 import { z } from "zod";
-import Spinner from "@/components/spinner";
+import Spinner from "@/components/ui/spinner";
 import { redirect, useSearchParams } from "next/navigation";
 import { DEFAULT_LOGIN_REDIRECT } from "@/routes";
 import Input from "../form-components/input";

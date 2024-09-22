@@ -8,7 +8,7 @@ export default function SidebarNavButtons() {
   return (
     <Dialog>
       <li>
-        <DialogTrigger className='flex justify-start w-full px-2 h-10 hover:bg-[var(--hover-bg)] gap-1.5 rounded-md hover:text-foreground'>
+        <DialogTrigger className='flex justify-start w-full px-2 h-10 hover:bg-[var(--hover-bg)] gap-1.5 rounded-[var(--rounded)] hover:text-foreground'>
           <GoPlus className='size-5' />
           Add task
         </DialogTrigger>

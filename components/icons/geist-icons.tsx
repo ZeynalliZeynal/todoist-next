@@ -1,4 +1,4 @@
-export const ChartBarMiddle = ({ size }: { size?: number }) => {
+export const ChartBarMiddle = ({ size = 16 }: { size?: number }) => {
   return (
     <svg
       strokeLinejoin='round'
@@ -18,14 +18,14 @@ export const ChartBarMiddle = ({ size }: { size?: number }) => {
   );
 };
 
-export const Inbox = ({ size }: { size?: number }) => {
+export const Inbox = ({ size = 16 }: { size?: number }) => {
   return (
     <svg
       strokeLinejoin='round'
       viewBox='0 0 16 16'
       style={{
-        width: size + "px",
-        height: size + "px",
+        width: size,
+        height: size,
       }}
     >
       <path
@@ -38,7 +38,7 @@ export const Inbox = ({ size }: { size?: number }) => {
   );
 };
 
-export const Search = ({ size }: { size?: number }) => {
+export const Search = ({ size = 16 }: { size?: number }) => {
   return (
     <svg
       className='with-icon_icon__MHUeb'
@@ -60,7 +60,7 @@ export const Search = ({ size }: { size?: number }) => {
   );
 };
 
-export const Upcoming = ({ size }: { size?: number }) => {
+export const Upcoming = ({ size = 16 }: { size?: number }) => {
   return (
     <svg
       xmlns='http://www.w3.org/2000/svg'
@@ -81,7 +81,7 @@ export const Upcoming = ({ size }: { size?: number }) => {
   );
 };
 
-export const GridSquare = ({ size }: { size?: number }) => {
+export const GridSquare = ({ size = 16 }: { size?: number }) => {
   return (
     <svg
       strokeLinejoin='round'
@@ -380,6 +380,69 @@ export const Tag = ({ size = 16 }: { size?: number }) => {
         fillRule='evenodd'
         clipRule='evenodd'
         d='M1.5 1.5H6.34315C7.00619 1.5 7.64207 1.76339 8.11091 2.23223L13.8787 8L8 13.8787L2.23223 8.11091C1.76339 7.64207 1.5 7.00619 1.5 6.34315V1.5ZM16 8L14.9393 6.93934L9.17157 1.17157C8.42143 0.421427 7.40401 0 6.34315 0H1.5H0V1.5V6.34315C0 7.40401 0.421426 8.42143 1.17157 9.17157L6.93934 14.9393L8 16L9.06066 14.9393L14.9393 9.06066L16 8ZM4.5 5.25C4.91421 5.25 5.25 4.91421 5.25 4.5C5.25 4.08579 4.91421 3.75 4.5 3.75C4.08579 3.75 3.75 4.08579 3.75 4.5C3.75 4.91421 4.08579 5.25 4.5 5.25Z'
+        fill='currentColor'
+      />
+    </svg>
+  );
+};
+
+export const ChevronUp = ({ size = 16 }: { size?: number }) => {
+  return (
+    <svg
+      viewBox='0 0 16 16'
+      xmlns='http://www.w3.org/2000/svg'
+      strokeLinejoin='round'
+      style={{
+        width: size,
+        height: size,
+      }}
+    >
+      <path
+        fillRule='evenodd'
+        clipRule='evenodd'
+        d='M1.93935 10.5L2.46968 9.96966L7.2929 5.14644C7.68342 4.75592 8.31659 4.75592 8.70711 5.14644L13.5303 9.96966L14.0607 10.5L13 11.5607L12.4697 11.0303L8 6.56065L3.53034 11.0303L3.00001 11.5607L1.93935 10.5Z'
+        fill='currentColor'
+      />
+    </svg>
+  );
+};
+
+export const ChevronDown = ({ size = 16 }: { size?: number }) => {
+  return (
+    <svg
+      viewBox='0 0 16 16'
+      xmlns='http://www.w3.org/2000/svg'
+      strokeLinejoin='round'
+      style={{
+        width: size,
+        height: size,
+      }}
+    >
+      <path
+        fillRule='evenodd'
+        clipRule='evenodd'
+        d='M14.0607 5.49999L13.5303 6.03032L8.7071 10.8535C8.31658 11.2441 7.68341 11.2441 7.29289 10.8535L2.46966 6.03032L1.93933 5.49999L2.99999 4.43933L3.53032 4.96966L7.99999 9.43933L12.4697 4.96966L13 4.43933L14.0607 5.49999Z'
+        fill='currentColor'
+      />
+    </svg>
+  );
+};
+
+export const MoreHorizontal = ({ size = 16 }: { size?: number }) => {
+  return (
+    <svg
+      viewBox='0 0 16 16'
+      xmlns='http://www.w3.org/2000/svg'
+      strokeLinejoin='round'
+      style={{
+        width: size,
+        height: size,
+      }}
+    >
+      <path
+        fillRule='evenodd'
+        clipRule='evenodd'
+        d='M4 8C4 8.82843 3.32843 9.5 2.5 9.5C1.67157 9.5 1 8.82843 1 8C1 7.17157 1.67157 6.5 2.5 6.5C3.32843 6.5 4 7.17157 4 8ZM9.5 8C9.5 8.82843 8.82843 9.5 8 9.5C7.17157 9.5 6.5 8.82843 6.5 8C6.5 7.17157 7.17157 6.5 8 6.5C8.82843 6.5 9.5 7.17157 9.5 8ZM13.5 9.5C14.3284 9.5 15 8.82843 15 8C15 7.17157 14.3284 6.5 13.5 6.5C12.6716 6.5 12 7.17157 12 8C12 8.82843 12.6716 9.5 13.5 9.5Z'
         fill='currentColor'
       />
     </svg>

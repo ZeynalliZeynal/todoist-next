@@ -9,7 +9,7 @@ import {
 import { HiOutlineDotsHorizontal } from "react-icons/hi";
 import AddLabelDropdown from "./add-tag-dropdown";
 import { Location } from "@/components/icons/geist-icons";
-import Badge from "@/components/badge";
+import Badge from "@/components/ui/badge";
 import { getUser } from "@/data/user";
 import prisma from "@/lib/prisma/prisma";
 
@@ -28,15 +28,15 @@ const AddMoreDropdowns = async () => {
           <HiOutlineDotsHorizontal />
         </IconButton>
       </DropdownMenuTrigger>
-      <DropdownMenuContent className="min-w-52">
-        <DropdownMenuGroup className="flex flex-col">
+      <DropdownMenuContent className='min-w-52'>
+        <DropdownMenuGroup className='flex flex-col'>
           <AddLabelDropdown tags={tags.map((tag) => tag.name)} />
           <DropdownMenuItem asChild>
-            <button className="grid grid-cols-[1.5rem_1fr] justify-items-start">
+            <button className='grid grid-cols-[1.5rem_1fr] justify-items-start'>
               <Location />
-              <span className="inline-flex items-center w-full justify-between">
+              <span className='inline-flex items-center w-full justify-between'>
                 Location
-                <Badge style="amber-subtle">UPGRADE</Badge>
+                <Badge style='amber-subtle'>UPGRADE</Badge>
               </span>
             </button>
           </DropdownMenuItem>

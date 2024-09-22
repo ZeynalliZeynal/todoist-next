@@ -1,6 +1,6 @@
 "use client";
 
-import Spinner from "@/components/spinner";
+import Spinner from "@/components/ui/spinner";
 import { LuLogOut } from "react-icons/lu";
 import { useLogout } from "@/hooks/useLogout";
 import { DropdownMenuItem } from "@/components/ui/dropdown-menu";
@@ -10,7 +10,7 @@ const NavLogoutButton = () => {
 
   return (
     <DropdownMenuItem asChild>
-      <button onClick={handleClick} disabled={isPending} className="w-full">
+      <button onClick={handleClick} disabled={isPending} className='w-full'>
         Log out {isPending ? <Spinner /> : <LuLogOut />}
       </button>
     </DropdownMenuItem>

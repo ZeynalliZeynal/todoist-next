@@ -1,6 +1,6 @@
 import prisma from "@/lib/prisma/prisma";
 import CardsWrapper from "@/components/account/today/cards-wrapper";
-import Button from "@/components/button";
+import Button from "@/components/ui/button";
 import { Plus } from "@/components/icons/geist-icons";
 import TaskList from "@/components/account/today/task-list";
 import AddTaskDialog from "@/components/add-dialog/add-task-dialog";

@@ -1,6 +1,6 @@
 "use client";
 
-import Button from "@/components/button";
+import Button from "@/components/ui/button";
 import { ReactNode } from "react";
 import { useFormStatus } from "react-dom";
 
@@ -14,7 +14,7 @@ const FormButton = ({
   const { pending } = useFormStatus();
 
   return (
-    <Button type="submit" size="lg" full primary icon={icon} disabled={pending}>
+    <Button type='submit' size='lg' full primary icon={icon} disabled={pending}>
       Continue with {children}
     </Button>
   );

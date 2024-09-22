@@ -4,7 +4,7 @@ import {
   ArrowUpRightSmall,
   ChartBarMiddle,
 } from "@/components/icons/geist-icons";
-import ThemeSwitcher from "@/components/theme-switcher";
+import ThemeSwitcher from "@/components/ui/theme-switcher";
 import {
   DropdownMenuGroup,
   DropdownMenuItem,
