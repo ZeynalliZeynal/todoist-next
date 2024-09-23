@@ -4,6 +4,29 @@ import prisma from "@/lib/prisma/prisma";
 import { revalidatePath } from "next/cache";
 import { verifySession } from "@/lib/auth/session";
 import { FieldValues } from "react-hook-form";
+import { Task } from "@prisma/client";
+
+export const updateTask = async (updatedData: Task) => {
+  if (!updatedData.name) return { error: "Please enter a name" };
+
+  const session = await verifySession();
+  if (!session) return { error: "You are not logged in" };
+
+  await prisma.task.update({
+    where: {
+      id: updatedData.id,
+    },
+    data: {
+      userId: session.userId,
+      name: updatedData.name,
+      description: updatedData.description,
+      tags: updatedData?.tags,
+      updatedAt: new Date(),
+    },
+  });
+
+  revalidatePath("/account");
+};
 
 export const addTask = async (formData: FieldValues, tags: string[]) => {
   const name = formData.get("name")?.toString();
@@ -13,7 +36,6 @@ export const addTask = async (formData: FieldValues, tags: string[]) => {
   const session = await verifySession();
   if (!session) return { error: "You are not logged in" };
 
-  console.log(tags);
   await prisma.task.create({
     data: {
       userId: session.userId,
@@ -23,7 +45,7 @@ export const addTask = async (formData: FieldValues, tags: string[]) => {
     },
   });
 
-  revalidatePath("/account/today");
+  revalidatePath("/account");
 };
 
 export const completeTask = async (taskId: string) => {
@@ -41,5 +63,6 @@ export const completeTask = async (taskId: string) => {
     where: { id: taskId },
     data: { isCompleted: true },
   });
-  revalidatePath("/account/today");
+
+  revalidatePath("/account");
 };

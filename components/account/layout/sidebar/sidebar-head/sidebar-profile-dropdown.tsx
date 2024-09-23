@@ -48,7 +48,11 @@ export default async function SidebarProfileDropdown() {
         </button>
       </DropdownMenuTrigger>
       <DropdownMenuContent className='min-w-64 ml-3'>
-        <SidebarDropdownMenu name={user?.name} />
+        <SidebarDropdownMenu
+          name={user?.name}
+          taskSize={tasks.length}
+          completedTasksSize={completedTasksSize}
+        />
       </DropdownMenuContent>
     </DropdownMenu>
   );

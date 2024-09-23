@@ -37,6 +37,7 @@ const TodayCards = async () => {
         {!!tasks_overdue.length && (
           <CardsWrapper>
             <TaskList overdue tasks={tasks_overdue} />
+            <div className='sticky bottom-0 bg-background-100 py-3 border-t flex-none' />
           </CardsWrapper>
         )}
         <CardsWrapper>
