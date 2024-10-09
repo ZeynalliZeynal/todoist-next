@@ -21,7 +21,7 @@ const config: Config = {
           black: "#000",
         },
         foreground: {
-          DEFAULT: "hsla(var(--ds-foreground))",
+          DEFAULT: "hsla(var(--ds-gray-1000))",
         },
         background: {
           100: "hsla(var(--ds-background-100))",

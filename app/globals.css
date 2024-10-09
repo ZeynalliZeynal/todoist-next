@@ -8,7 +8,6 @@
     &.light {
       --ds-background-100: 0, 0%, 100%;
       --ds-background-200: 0, 0%, 98%;
-      --ds-foreground: 0, 0%, 0%;
 
       --ds-gray-100: 0, 0%, 95%;
       --ds-gray-200: 0, 0%, 92%;
@@ -111,14 +110,11 @@
 
       --button-bg-hover-dark: 0, 0%, 22%;
       --button-bg-disabled-dark: 0, 0%, 10%;
-
-      --header-border: 0 1px 0 0 (0, 0%, 0, 0.102);
     }
 
     &.dark {
       --ds-background-100: 0, 0%, 0%;
       --ds-background-200: 0, 0%, 4%;
-      --ds-foreground: 0, 0%, 100%;
 
       --ds-gray-100: 0, 0%, 10%;
       --ds-gray-200: 0, 0%, 12%;
@@ -221,7 +217,6 @@
 
       --button-bg-hover-dark: 0, 0%, 80%;
       --button-bg-disabled-dark: 0, 0%, 95%;
-      --header-border: 0 1px 0 0 #ffffff1a;
     }
 
     --radius: 0.5rem;
@@ -285,7 +280,7 @@
 
   button,
   a {
-    @apply transition-all inline-flex items-center justify-center duration-200 ease-in-out;
+    @apply inline-flex items-center justify-center ease-in-out;
   }
 
   button {
@@ -308,6 +303,14 @@
 
   input {
     @apply [all:unset] placeholder:font-light disabled:cursor-not-allowed disabled:bg-gray-100 disabled:text-gray-700;
+  }
+
+  h1 {
+    @apply text-6xl font-bold leading-snug
+  }
+
+  h2 {
+    @apply text-4xl font-bold
   }
 }
 ::-webkit-scrollbar-track {

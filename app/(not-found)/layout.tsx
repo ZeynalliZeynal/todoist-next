@@ -1,6 +1,7 @@
 import { Indie_Flower, Inter } from "next/font/google";
 import React from "react";
 import "@/app/globals.css";
+import { ThemeSwitcher } from "@/context/theme-switcher-context";
 
 const indieFlower = Indie_Flower({
   subsets: ["latin"],
@@ -15,12 +16,14 @@ export default function Layout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body suppressHydrationWarning={true} className={inter.className}>
-        <div className="flex w-screen h-screen justify-center items-center">
-          {children}
-        </div>
-      </body>
-    </html>
+    <ThemeSwitcher>
+      <html lang="en">
+        <body suppressHydrationWarning={true} className={inter.className}>
+          <div className="flex w-screen h-screen justify-center items-center">
+            {children}
+          </div>
+        </body>
+      </html>
+    </ThemeSwitcher>
   );
 }

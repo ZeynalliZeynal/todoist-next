@@ -27,16 +27,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang='en'>
+    <html lang="en">
       <body
         suppressHydrationWarning={true}
         className={`${indieFlower.className} ${inter.className}`}
       >
         <ThemeSwitcher>
           <Header />
-          <div className='flex flex-col'>
-            <div className='flex-1 grid'>
-              <main className='w-full'>{children}</main>
+          <div className="flex flex-col">
+            <div className="flex-1 grid">
+              <main className="w-full">{children}</main>
             </div>
           </div>
         </ThemeSwitcher>
