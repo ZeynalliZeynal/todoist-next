@@ -77,7 +77,7 @@ const TaskList = ({
                   </div>
                 </DialogTrigger>
                 <DialogContent>
-                  <Task task={task} />
+                  <Task task={task} onComplete={handleComplete} />
                 </DialogContent>
               </Dialog>
             ))}

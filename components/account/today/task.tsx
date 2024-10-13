@@ -7,10 +7,16 @@ import {
 } from "@/components/icons/geist-icons";
 import { DialogClose } from "@/components/ui/dialog";
 import KeyboardInput from "@/components/ui/keyboard-input";
-import TaskBody from "./task-form";
+import TaskBody from "./task-body";
 import { Task as TaskProps } from "@prisma/client";
 
-const Task = ({ task }: { task: TaskProps }) => {
+const Task = ({
+  task,
+  onComplete,
+}: {
+  task: TaskProps;
+  onComplete: (taskId: string) => void;
+}) => {
   return (
     <div className='flex flex-col text-gray-900'>
       <div className='p-3 flex items-center border-b justify-between'>
@@ -38,7 +44,7 @@ const Task = ({ task }: { task: TaskProps }) => {
           </DialogClose>
         </div>
       </div>
-      <TaskBody task={task} />
+      <TaskBody task={task} onComplete={onComplete} />
     </div>
   );
 };

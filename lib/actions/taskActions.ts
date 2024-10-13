@@ -29,8 +29,8 @@ export const updateTask = async (updatedData: Task) => {
 };
 
 export const addTask = async (formData: FieldValues, tags: string[]) => {
-  const name = formData.get("name")?.toString();
-  const description = formData.get("description")?.toString();
+  const name = formData.get("name")?.toString().trim();
+  const description = formData.get("description")?.toString().trim();
   if (!name) return { error: "Please enter a name" };
 
   const session = await verifySession();
