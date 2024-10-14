@@ -4,9 +4,9 @@ import Button from "@/components/ui/button";
 import CheckTask from "@/components/ui/check-task";
 import { DialogClose } from "@/components/ui/dialog";
 import Spinner from "@/components/ui/spinner";
-import { completeTask, updateTask } from "@/lib/actions/taskActions";
+import { updateTask } from "@/lib/actions/taskActions";
 import { Task } from "@prisma/client";
-import { ChangeEventHandler, useRef, useState, useTransition } from "react";
+import { useEffect, useState, useTransition } from "react";
 
 const TaskBody = ({
   task,
@@ -17,73 +17,67 @@ const TaskBody = ({
 }) => {
   const [isPending, startTransition] = useTransition();
 
-  const [editable, setEditable] = useState<boolean>(false);
   const [edited, setEdited] = useState(false);
-  const nameRef = useRef<HTMLDivElement | null>(null);
-  const descRef = useRef<HTMLDivElement | null>(null);
+  const [name, setName] = useState("");
+  const [description, setDescription] = useState("");
 
   const handleSave = () => {
     startTransition(async () => {
-      if (edited && nameRef.current && descRef.current)
+      if (edited)
         await updateTask({
           ...task,
-          name: nameRef.current.innerText.trim(),
-          description: descRef.current.innerText.trim(),
+          name,
+          description,
         });
     });
   };
 
-  const handleTyping: ChangeEventHandler<HTMLDivElement> = () => {
-    if (
-      nameRef.current?.innerText.trim() !== task.name ||
-      descRef.current?.innerText.trim() !== task.description
-    )
-      setEdited(true);
+  const handleTyping = () => {};
+
+  useEffect(() => {
+    setName(task.name);
+    if (task.description) setDescription(task.description);
+  }, []);
+
+  useEffect(() => {
+    if (name !== task.name || description !== task.description) setEdited(true);
     else setEdited(false);
-  };
+  }, [name, description]);
 
   return (
-    <div className='p-3 space-y-3'>
-      <div className='flex gap-3'>
-        <div className='w-[1.125rem]'>
+    <form className="p-3 space-y-3">
+      <div className="flex gap-3">
+        <div className="w-[1.125rem]">
           <CheckTask onCheck={() => onComplete(task.id)} />
         </div>
         <div
-          data-focus={editable ? "" : undefined}
-          role='button'
-          className='flex-grow space-y-1 data-[focus]:ring-1 rounded-md px-2 py-1 ring-foreground'
-          onBlur={() => setEditable(false)}
+          onSubmit={handleSave}
+          className="flex-grow space-y-1 focus-within:ring-1 rounded-md px-2 py-1 ring-foreground transition flex flex-col"
         >
-          <div
-            ref={nameRef}
-            tabIndex={0}
-            className='text-xl font-semibold outline-none'
-            onClick={() => {
-              setEditable(true);
+          <input
+            type="text"
+            className="text-xl font-semibold placeholder:text-gray-700"
+            placeholder="Task name"
+            onChange={(event) => {
+              handleTyping();
+              setName(event.target.value.trim());
             }}
-            onInput={handleTyping}
-            contentEditable={editable}
-            suppressContentEditableWarning
-          >
-            {task.name}
-          </div>
-          <div
-            ref={descRef}
-            tabIndex={0}
-            className='text-sm w-full min-h-5 outline-none'
-            onClick={() => {
-              setEditable(true);
+            value={name}
+          />
+          <input
+            type="text"
+            className="text-sm placeholder:text-gray-700"
+            placeholder="Task description"
+            onChange={(event) => {
+              handleTyping();
+              setDescription(event.target.value.trim());
             }}
-            onInput={handleTyping}
-            contentEditable={editable}
-            suppressContentEditableWarning
-          >
-            {task.description}
-          </div>
+            value={description}
+          />
         </div>
       </div>
       {edited && (
-        <div className='flex items-center justify-end w-full'>
+        <div className="flex items-center justify-end w-full">
           <DialogClose asChild>
             <Button
               onClick={handleSave}
@@ -95,7 +89,7 @@ const TaskBody = ({
           </DialogClose>
         </div>
       )}
-    </div>
+    </form>
   );
 };
 

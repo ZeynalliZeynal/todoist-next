@@ -12,6 +12,8 @@ export const updateTask = async (updatedData: Task) => {
   const session = await verifySession();
   if (!session) return { error: "You are not logged in" };
 
+  console.log(updatedData);
+
   await prisma.task.update({
     where: {
       id: updatedData.id,
