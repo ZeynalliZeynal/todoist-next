@@ -37,12 +37,12 @@ const TaskBody = ({
   useEffect(() => {
     setName(task.name);
     if (task.description) setDescription(task.description);
-  }, []);
+  }, [task]);
 
   useEffect(() => {
     if (name !== task.name || description !== task.description) setEdited(true);
     else setEdited(false);
-  }, [name, description]);
+  }, [name, description, task]);
 
   return (
     <form className="p-3 space-y-3">
