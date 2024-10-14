@@ -2,6 +2,7 @@ import TodayCards from "@/components/account/today/cards";
 import { Check } from "@/components/icons/geist-icons";
 import { getUser } from "@/data/user";
 import prisma from "@/lib/prisma/prisma";
+import { Suspense } from "react";
 
 const Page = async () => {
   const user = await getUser();
@@ -32,7 +33,9 @@ const Page = async () => {
             )}
           </div>
         </div>
-        <TodayCards />
+        <Suspense fallback={<p>Loading...</p>}>
+          <TodayCards />
+        </Suspense>
       </div>
     </div>
   );

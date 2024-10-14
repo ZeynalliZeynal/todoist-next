@@ -12,7 +12,7 @@ const CheckTask = ({
   return (
     <button
       type="button"
-      className="size-5 rounded-full border group active:scale-110 disabled:pointer-events-none"
+      className="size-5 rounded-full border group active:scale-110 disabled:pointer-events-none hover:border-[--border-on-hover]"
       onClick={onCheck}
       disabled={disabled}
     >
