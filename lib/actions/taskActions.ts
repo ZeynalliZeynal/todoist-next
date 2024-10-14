@@ -20,8 +20,8 @@ export const updateTask = async (updatedData: Task) => {
     },
     data: {
       userId: session.userId,
-      name: updatedData.name,
-      description: updatedData.description,
+      name: updatedData.name.trim(),
+      description: updatedData.description?.trim(),
       tags: updatedData?.tags,
       updatedAt: new Date(),
     },

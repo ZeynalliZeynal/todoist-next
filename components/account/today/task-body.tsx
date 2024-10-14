@@ -60,7 +60,7 @@ const TaskBody = ({
             placeholder="Task name"
             onChange={(event) => {
               handleTyping();
-              setName(event.target.value.trim());
+              setName(event.target.value);
             }}
             value={name}
           />
@@ -70,7 +70,7 @@ const TaskBody = ({
             placeholder="Task description"
             onChange={(event) => {
               handleTyping();
-              setDescription(event.target.value.trim());
+              setDescription(event.target.value);
             }}
             value={description}
           />
