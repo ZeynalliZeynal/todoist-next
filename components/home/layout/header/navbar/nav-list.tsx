@@ -17,7 +17,6 @@ const NavList = ({ children }: { children: ReactNode }) => {
   const handleMouseEnter: MouseEventHandler<HTMLElement> = (event) => {
     const parentUl = event.currentTarget.closest('[role="group"]');
     if (!parentUl) return;
-    const elIndex = Number(event.currentTarget.dataset.index);
     const parentRect = parentUl.getBoundingClientRect();
     const rect = event.currentTarget.getBoundingClientRect();
 
