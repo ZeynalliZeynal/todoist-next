@@ -5,13 +5,14 @@ import { CSSProperties, MouseEventHandler, ReactNode, useState } from "react";
 import { cn } from "@/lib/utils";
 import { NAV_LINKS } from "@/utils/consts";
 import { ChevronDown } from "lucide-react";
+import { tasks } from "@/lib/actions/testActions";
 
 const className = "px-3 py-2 relative z-[2] transition";
 
 const NavList = ({ children }: { children: ReactNode }) => {
   const [active, setActive] = useState("");
   const [hoverStyle, setHoverStyle] = useState<CSSProperties | undefined>(
-    undefined,
+    undefined
   );
 
   const handleMouseEnter: MouseEventHandler<HTMLElement> = (event) => {
@@ -35,16 +36,16 @@ const NavList = ({ children }: { children: ReactNode }) => {
   };
 
   return (
-    <nav className="text-gray-900 leading-none flex items-center">
-      <ul role="group" className="relative">
+    <nav className='text-gray-900 leading-none flex items-center'>
+      <ul role='group' className='relative'>
         <div
           className={cn(
-            "rounded-full absolute z-[1] transition-all duration-300",
+            "rounded-full absolute z-[1] transition-all duration-300"
           )}
           style={hoverStyle}
         />
         {NAV_LINKS.map(({ href, content, label, hasPopup }, index) => (
-          <li role="listitem" key={index}>
+          <li role='listitem' key={index}>
             {href ? (
               <Link
                 href={href as string}
@@ -52,7 +53,7 @@ const NavList = ({ children }: { children: ReactNode }) => {
                 aria-label={label}
                 className={cn(
                   { "text-foreground": active === label },
-                  className,
+                  className
                 )}
                 onMouseEnter={handleMouseEnter}
                 onMouseLeave={handleMouseLeave}
@@ -66,8 +67,18 @@ const NavList = ({ children }: { children: ReactNode }) => {
                 className={cn(
                   "gap-1",
                   { "text-foreground": active === label },
-                  className,
+                  className
                 )}
+                onClick={async () => {
+                  const data = await tasks();
+                  console.log(
+                    new Intl.DateTimeFormat("en", {
+                      hour: "2-digit",
+                      minute: "2-digit",
+                      second: "2-digit",
+                    }).format(new Date(data.requestedAt as Date))
+                  );
+                }}
                 onMouseEnter={handleMouseEnter}
                 onMouseLeave={handleMouseLeave}
               >
@@ -77,7 +88,7 @@ const NavList = ({ children }: { children: ReactNode }) => {
           </li>
         ))}
       </ul>
-      <div className="w-0.5 h-2/3 mx-3 bg-gray-400" />
+      <div className='w-0.5 h-2/3 mx-3 bg-gray-400' />
       {children}
     </nav>
   );
